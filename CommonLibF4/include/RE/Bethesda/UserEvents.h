@@ -4,9 +4,9 @@ namespace RE
 {
 	namespace UserEvents
 	{
-		enum class USER_EVENT_FLAG
+		enum class USER_EVENT_FLAG : std::int32_t
 		{
-			kAll = static_cast<std::underlying_type_t<USER_EVENT_FLAG>>(-1),
+			kAll = -1,
 
 			kMovement = 1 << 0,
 			kLooking = 1 << 1,

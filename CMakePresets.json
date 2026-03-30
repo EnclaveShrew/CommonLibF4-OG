@@ -78,6 +78,18 @@
       ],
       "name": "vs2022-windows-vcpkg",
       "toolset": "v143"
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX /external:W0"
+      },
+      "generator": "Visual Studio 18 2026",
+      "inherits": [
+        "cmake-dev",
+        "vcpkg",
+        "windows"
+      ],
+      "name": "vs2026-windows-vcpkg"
     }
   ],
   "version": 2

@@ -13,7 +13,8 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 	message(FATAL_ERROR "in-source builds are not allowed")
 endif()
 
-find_package(Boost MODULE REQUIRED)
+find_package(Boost CONFIG REQUIRED)
+find_package(fmt REQUIRED CONFIG)
 find_package(mmio REQUIRED CONFIG)
 find_package(spdlog REQUIRED CONFIG)
 
@@ -95,6 +96,7 @@ target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
 		Boost::headers
+		fmt::fmt
 		mmio::mmio
 		spdlog::spdlog
 		Version.lib

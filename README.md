@@ -1,15 +1,23 @@
-# CommonLibF4
+# CommonLibF4 - ShrewCustom OG
 
 ## General Requirements
 
 ### Build Dependencies
-* [Visual Studio Community 2019 16.10.0 Preview 3.0](https://visualstudio.microsoft.com/vs/preview/)
+* [Visual Studio Community 2026](https://visualstudio.microsoft.com/)
 	* Desktop development with C++
+	* MSVC v14.50+ build tools
+	* Windows SDK
+* [CMake 4.0+](https://cmake.org/)
+* [vcpkg](https://github.com/microsoft/vcpkg)
 
 ### Development
 * [clang-format 12.0.0](https://github.com/llvm/llvm-project/releases)
-* [CMake](https://cmake.org/)
-* [vcpkg](https://github.com/microsoft/vcpkg)
+
+### Build Instructions
+```
+cmake --preset vs2026-windows-vcpkg
+cmake --build build --config Debug
+```
 
 ## F4SE Plugin Requirements
 
