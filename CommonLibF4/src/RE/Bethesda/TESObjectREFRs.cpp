@@ -4,9 +4,9 @@
 
 namespace RE
 {
-	BIPOBJECT::~BIPOBJECT()
-	{
-		Dtor();
-		stl::memzero(this);
-	}
+BIPOBJECT::~BIPOBJECT()
+{
+    Dtor();
+    stl::memzero(this);
 }
+} // namespace RE

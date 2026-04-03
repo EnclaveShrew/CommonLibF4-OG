@@ -2,7 +2,7 @@
 
 namespace RE::BSContainer
 {
-	enum class ForEachResult
-	{
-	};
-}
+enum class ForEachResult
+{
+};
+} // namespace RE::BSContainer

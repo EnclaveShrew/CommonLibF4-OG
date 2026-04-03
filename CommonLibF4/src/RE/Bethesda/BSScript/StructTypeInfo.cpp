@@ -2,11 +2,11 @@
 
 namespace RE
 {
-	namespace BSScript
-	{
-		TypeInfo::RawType StructTypeInfo::GetRawType() const
-		{
-			return TypeInfo::RawType::kStruct;
-		}
-	}
+namespace BSScript
+{
+TypeInfo::RawType StructTypeInfo::GetRawType() const
+{
+    return TypeInfo::RawType::kStruct;
 }
+} // namespace BSScript
+} // namespace RE

@@ -2,19 +2,19 @@
 
 namespace RE
 {
-	enum class INPUT_DEVICE : std::int32_t
-	{
-		kNone = static_cast<std::underlying_type_t<INPUT_DEVICE>>(-1),
+enum class INPUT_DEVICE : std::int32_t
+{
+    kNone = static_cast<std::underlying_type_t<INPUT_DEVICE>>(-1),
 
-		kKeyboard = 0,
-		kMouse,
-		kGamepad,
+    kKeyboard = 0,
+    kMouse,
+    kGamepad,
 
-		kSupported,
+    kSupported,
 
-		kKinect = 3,
-		kVirtualKeyboard,
+    kKinect = 3,
+    kVirtualKeyboard,
 
-		kTotal
-	};
-}
+    kTotal
+};
+} // namespace RE

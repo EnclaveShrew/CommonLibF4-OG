@@ -4,7 +4,7 @@
 
 #define NOGDICAPMASKS
 #define NOVIRTUALKEYCODES
-//#define NOWINMESSAGES
+// #define NOWINMESSAGES
 #define NOWINSTYLES
 #define NOSYSMETRICS
 #define NOMENUS
@@ -17,17 +17,17 @@
 #define NOATOM
 #define NOCLIPBOARD
 #define NOCOLOR
-//#define NOCTLMGR
+// #define NOCTLMGR
 #define NODRAWTEXT
 #define NOGDI
 #define NOKERNEL
-//#define NOUSER
+// #define NOUSER
 #define NONLS
 #define NOMB
 #define NOMEMMGR
 #define NOMETAFILE
 #define NOMINMAX
-//#define NOMSG
+// #define NOMSG
 #define NOOPENFILE
 #define NOSCROLL
 #define NOSERVICE

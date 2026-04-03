@@ -2,12 +2,12 @@
 
 namespace RE
 {
-	template <class T>
-	class DFALL
-	{
-	public:
-	};
+template <class T>
+class DFALL
+{
+  public:
+};
 
-	template <class T>
-	using NiTDefaultAllocator = DFALL<T>;
-}
+template <class T>
+using NiTDefaultAllocator = DFALL<T>;
+} // namespace RE

@@ -12,591 +12,724 @@
 
 namespace RE
 {
-	class bhkNPCollisionObject;
-	class BGSMessage;
-	class TESObjectCELL;
-	class TESObjectREFR;
+class bhkNPCollisionObject;
+class BGSMessage;
+class HUDModeType;
+class TESObjectCELL;
+class TESObjectREFR;
 
-	struct InventoryUserUIInterfaceEntry;
+struct InventoryUserUIInterfaceEntry;
 
-	struct BSThreadEvent
-	{
-	public:
-		enum class Event
-		{
-			kOnStartup,
-			kOnShutdown
-		};
+struct BSThreadEvent
+{
+  public:
+    enum class Event
+    {
+        kOnStartup,
+        kOnShutdown
+    };
 
-		static void InitSDM()
-		{
-			using func_t = decltype(&BSThreadEvent::InitSDM);
-			REL::Relocation<func_t> func{ REL::ID(1425097) };
-			return func();
-		}
-	};
-	static_assert(std::is_empty_v<BSThreadEvent>);
+    static void InitSDM()
+    {
+        using func_t = decltype(&BSThreadEvent::InitSDM);
+        REL::Relocation<func_t> func{REL::ID(1425097)};
+        return func();
+    }
+};
+static_assert(std::is_empty_v<BSThreadEvent>);
 
-	enum class QuickContainerMode : std::int32_t
-	{
-		kLoot,
-		kTeammate,
-		kPowerArmor,
-		kTurret,
-		kWorkshop,
-		kCrafting,
-		kStealing,
-		kStealingPowerArmor
-	};
+enum class QuickContainerMode : std::int32_t
+{
+    kLoot,
+    kTeammate,
+    kPowerArmor,
+    kTurret,
+    kWorkshop,
+    kCrafting,
+    kStealing,
+    kStealingPowerArmor
+};
 
-	struct ApplyColorUpdateEvent
-	{
-	private:
-		using EventSource_t = BSTGlobalEvent::EventSource<ApplyColorUpdateEvent>;
+struct ApplyColorUpdateEvent
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<ApplyColorUpdateEvent>;
 
-	public:
-		[[nodiscard]] static EventSource_t* GetEventSource()
-		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(421543) };
-			if (!*singleton) {
-				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
-			}
-			return *singleton;
-		}
-	};
-	static_assert(std::is_empty_v<ApplyColorUpdateEvent>);
+  public:
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(421543)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
+};
+static_assert(std::is_empty_v<ApplyColorUpdateEvent>);
 
-	class CanDisplayNextHUDMessage :
-		public BSTValueEvent<bool>
-	{
-	private:
-		using EventSource_t = BSTGlobalEvent::EventSource<CanDisplayNextHUDMessage>;
+class CanDisplayNextHUDMessage : public BSTValueEvent<bool>
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<CanDisplayNextHUDMessage>;
 
-	public:
-		CanDisplayNextHUDMessage(bool a_value)
-		{
-			optionalValue = a_value;
-		}
+  public:
+    CanDisplayNextHUDMessage(bool a_value)
+    {
+        optionalValue = a_value;
+    }
 
-		[[nodiscard]] static EventSource_t* GetEventSource()
-		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(344866) };
-			if (!*singleton) {
-				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
-			}
-			return *singleton;
-		}
-	};
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(344866)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
+};
 
-	struct CellAttachDetachEvent
-	{
-	public:
-		enum class EVENT_TYPE
-		{
-			kPreAttach,
-			kPostAttach,
-			kPreDetach,
-			kPostDetach
-		};
+struct CellAttachDetachEvent
+{
+  public:
+    enum class EVENT_TYPE
+    {
+        kPreAttach,
+        kPostAttach,
+        kPreDetach,
+        kPostDetach
+    };
 
-		// members
-		TESObjectCELL* cell;                              // 00
-		stl::enumeration<EVENT_TYPE, std::int32_t> type;  // 08
-	};
-	static_assert(sizeof(CellAttachDetachEvent) == 0x10);
+    // members
+    TESObjectCELL *cell;                             // 00
+    stl::enumeration<EVENT_TYPE, std::int32_t> type; // 08
+};
+static_assert(sizeof(CellAttachDetachEvent) == 0x10);
 
-	class CurrentRadiationSourceCount :
-		public BSTValueEvent<std::uint32_t>
-	{
-	private:
-		using EventSource_t = BSTGlobalEvent::EventSource<CurrentRadiationSourceCount>;
+class CurrentRadiationSourceCount : public BSTValueEvent<std::uint32_t>
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<CurrentRadiationSourceCount>;
 
-	public:
-		[[nodiscard]] static EventSource_t* GetEventSource()
-		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(696410) };
-			if (!*singleton) {
-				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
-			}
-			return *singleton;
-		}
-	};
-	static_assert(sizeof(CurrentRadiationSourceCount) == 0x08);
+  public:
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(696410)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
+};
+static_assert(sizeof(CurrentRadiationSourceCount) == 0x08);
 
-	class CurrentRadsDisplayMagnitude :
-		public BSTValueEvent<float>
-	{
-	public:
-	};
-	static_assert(sizeof(CurrentRadsDisplayMagnitude) == 0x08);
+struct ColorUpdateEvent
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<ColorUpdateEvent>;
 
-	class CurrentRadsPercentOfLethal :
-		public BSTValueEvent<float>
-	{
-	public:
-	};
-	static_assert(sizeof(CurrentRadsPercentOfLethal) == 0x08);
+  public:
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(1226590)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
+};
+static_assert(std::is_empty_v<ColorUpdateEvent>);
 
-	struct DoBeforeNewOrLoadCompletedEvent
-	{
-	private:
-		using EventSource_t = BSTGlobalEvent::EventSource<DoBeforeNewOrLoadCompletedEvent>;
+class CurrentRadsDisplayMagnitude : public BSTValueEvent<float>
+{
+  public:
+};
+static_assert(sizeof(CurrentRadsDisplayMagnitude) == 0x08);
 
-	public:
-		[[nodiscard]] static EventSource_t* GetEventSource()
-		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(787908) };
-			if (!*singleton) {
-				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
-			}
-			return *singleton;
-		}
-	};
-	static_assert(sizeof(DoBeforeNewOrLoadCompletedEvent) == 0x01);
+class CurrentRadsPercentOfLethal : public BSTValueEvent<float>
+{
+  public:
+};
+static_assert(sizeof(CurrentRadsPercentOfLethal) == 0x08);
 
-	struct InventoryItemDisplayData
-	{
-	public:
-		InventoryItemDisplayData(
-			const ObjectRefHandle a_inventoryRef,
-			const InventoryUserUIInterfaceEntry& a_entry)
-		{
-			ctor(a_inventoryRef, a_entry);
-		}
+struct DoBeforeNewOrLoadCompletedEvent
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<DoBeforeNewOrLoadCompletedEvent>;
 
-		void PopulateFlashObject(Scaleform::GFx::Value& a_flashObject)
-		{
-			a_flashObject.SetMember("text"sv, itemName.c_str());
-			a_flashObject.SetMember("count"sv, itemCount);
-			a_flashObject.SetMember("equipState"sv, equipState);
-			a_flashObject.SetMember("filterFlag"sv, filterFlag);
-			a_flashObject.SetMember("isLegendary"sv, isLegendary);
-			a_flashObject.SetMember("favorite"sv, isFavorite);
-			a_flashObject.SetMember("taggedForSearch"sv, isTaggedForSearch);
-			a_flashObject.SetMember("isBetterThanEquippedItem"sv, isBetterThanEquippedItem);
-		}
+  public:
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(787908)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
+};
+static_assert(sizeof(DoBeforeNewOrLoadCompletedEvent) == 0x01);
 
-		// members
-		BSFixedStringCS itemName;                // 00
-		std::uint32_t itemCount{ 0 };            // 08
-		std::uint32_t equipState{ 0 };           // 0C
-		std::uint32_t filterFlag{ 0 };           // 10
-		bool isLegendary{ false };               // 14
-		bool isFavorite{ false };                // 15
-		bool isTaggedForSearch{ false };         // 16
-		bool isBetterThanEquippedItem{ false };  // 17
+struct HUDModeEvent
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<HUDModeEvent>;
 
-	private:
-		InventoryItemDisplayData* ctor(
-			const ObjectRefHandle a_inventoryRef,
-			const InventoryUserUIInterfaceEntry& a_entry)
-		{
-			using func_t = decltype(&InventoryItemDisplayData::ctor);
-			REL::Relocation<func_t> func{ REL::ID(679373) };
-			return func(this, a_inventoryRef, a_entry);
-		}
-	};
-	static_assert(sizeof(InventoryItemDisplayData) == 0x18);
+  public:
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(683142)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
 
-	class LocksPicked
-	{
-	public:
-		struct Event
-		{
-		public:
-		};
+    // members
+    const BSTArray<HUDModeType> *currentHUDModes;
+};
+static_assert(sizeof(HUDModeEvent) == 0x08);
 
-		[[nodiscard]] static BSTEventSource<LocksPicked::Event>* GetEventSource()
-		{
-			using func_t = decltype(&LocksPicked::GetEventSource);
-			REL::Relocation<func_t> func{ REL::ID(594991) };
-			return func();
-		}
-	};
-	static_assert(std::is_empty_v<LocksPicked>);
-	static_assert(std::is_empty_v<LocksPicked::Event>);
+struct InventoryItemDisplayData
+{
+  public:
+    InventoryItemDisplayData(
+        const ObjectRefHandle a_inventoryRef,
+        const InventoryUserUIInterfaceEntry &a_entry)
+    {
+        ctor(a_inventoryRef, a_entry);
+    }
 
-	class MenuModeChangeEvent
-	{
-	public:
-		// members
-		BSFixedString menuName;  // 00
-		bool enteringMenuMode;   // 08
-	};
-	static_assert(sizeof(MenuModeChangeEvent) == 0x10);
+    void PopulateFlashObject(Scaleform::GFx::Value &a_flashObject)
+    {
+        a_flashObject.SetMember("text"sv, itemName.c_str());
+        a_flashObject.SetMember("count"sv, itemCount);
+        a_flashObject.SetMember("equipState"sv, equipState);
+        a_flashObject.SetMember("filterFlag"sv, filterFlag);
+        a_flashObject.SetMember("isLegendary"sv, isLegendary);
+        a_flashObject.SetMember("favorite"sv, isFavorite);
+        a_flashObject.SetMember("taggedForSearch"sv, isTaggedForSearch);
+        a_flashObject.SetMember("isBetterThanEquippedItem"sv, isBetterThanEquippedItem);
+    }
 
-	class MenuModeCounterChangedEvent
-	{
-	public:
-		// members
-		BSFixedString menuName;  // 00
-		bool incrementing;       // 08
-	};
-	static_assert(sizeof(MenuModeCounterChangedEvent) == 0x10);
+    // members
+    BSFixedStringCS itemName;             // 00
+    std::uint32_t itemCount{0};           // 08
+    std::uint32_t equipState{0};          // 0C
+    std::uint32_t filterFlag{0};          // 10
+    bool isLegendary{false};              // 14
+    bool isFavorite{false};               // 15
+    bool isTaggedForSearch{false};        // 16
+    bool isBetterThanEquippedItem{false}; // 17
 
-	class MenuOpenCloseEvent
-	{
-	public:
-		// members
-		BSFixedString menuName;  // 00
-		bool opening;            // 08
-	};
-	static_assert(sizeof(MenuOpenCloseEvent) == 0x10);
+  private:
+    InventoryItemDisplayData *ctor(
+        const ObjectRefHandle a_inventoryRef,
+        const InventoryUserUIInterfaceEntry &a_entry)
+    {
+        using func_t = decltype(&InventoryItemDisplayData::ctor);
+        REL::Relocation<func_t> func{REL::ID(679373)};
+        return func(this, a_inventoryRef, a_entry);
+    }
+};
+static_assert(sizeof(InventoryItemDisplayData) == 0x18);
 
-	class PerkPointIncreaseEvent
-	{
-	private:
-		using EventSource_t = BSTGlobalEvent::EventSource<PerkPointIncreaseEvent>;
+class LocksPicked
+{
+  public:
+    struct Event
+    {
+      public:
+    };
+    static_assert(std::is_empty_v<LocksPicked::Event>);
 
-	public:
-		PerkPointIncreaseEvent(std::uint8_t a_perkCount) :
-			perkCount(a_perkCount)
-		{}
+    [[nodiscard]] static BSTEventSource<LocksPicked::Event> *GetEventSource()
+    {
+        using func_t = decltype(&LocksPicked::GetEventSource);
+        REL::Relocation<func_t> func{REL::ID(594991)};
+        return func();
+    }
+};
+static_assert(std::is_empty_v<LocksPicked>);
 
-		[[nodiscard]] static EventSource_t* GetEventSource()
-		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(685859) };
-			if (!*singleton) {
-				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
-			}
-			return *singleton;
-		}
+class MenuModeChangeEvent
+{
+  public:
+    // members
+    BSFixedString menuName; // 00
+    bool enteringMenuMode;  // 08
+};
+static_assert(sizeof(MenuModeChangeEvent) == 0x10);
 
-		// members
-		std::uint8_t perkCount{ 0 };  // 00
-	};
-	static_assert(sizeof(PerkPointIncreaseEvent) == 0x1);
+class MenuModeCounterChangedEvent
+{
+  public:
+    // members
+    BSFixedString menuName; // 00
+    bool incrementing;      // 08
+};
+static_assert(sizeof(MenuModeCounterChangedEvent) == 0x10);
 
-	class PipboyLightEvent :
-		public BSTValueEvent<bool>
-	{
-	private:
-		using EventSource_t = BSTGlobalEvent::EventSource<PipboyLightEvent>;
+class MenuOpenCloseEvent
+{
+  public:
+    // members
+    BSFixedString menuName; // 00
+    bool opening;           // 08
+};
+static_assert(sizeof(MenuOpenCloseEvent) == 0x10);
 
-	public:
-		[[nodiscard]] static EventSource_t* GetEventSource()
-		{
-			REL::Relocation<EventSource_t**> singleton{ REL::ID(1140080) };
-			if (!*singleton) {
-				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
-			}
-			return *singleton;
-		}
-	};
-	static_assert(sizeof(PipboyLightEvent) == 0x02);
+class PerkPointIncreaseEvent
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<PerkPointIncreaseEvent>;
 
-	struct PlayerAmmoCounts
-	{
-	public:
-		// members
-		std::uint32_t clipAmmo;     // 00
-		std::uint32_t reserveAmmo;  // 04
-	};
-	static_assert(sizeof(PlayerAmmoCounts) == 0x08);
+  public:
+    PerkPointIncreaseEvent(std::uint8_t a_perkCount) : perkCount(a_perkCount)
+    {
+    }
 
-	class PlayerAmmoCountEvent :
-		public BSTValueEvent<PlayerAmmoCounts>
-	{
-	public:
-	};
-	static_assert(sizeof(PlayerAmmoCountEvent) == 0x0C);
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(685859)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
 
-	class PlayerWeaponReloadEvent :
-		public BSTValueEvent<bool>
-	{
-	public:
-	};
-	static_assert(sizeof(PlayerWeaponReloadEvent) == 0x02);
+    // members
+    std::uint8_t perkCount{0}; // 00
+};
+static_assert(sizeof(PerkPointIncreaseEvent) == 0x1);
 
-	struct QuickContainerStateData
-	{
-	public:
-		// members
-		BSTSmallArray<InventoryItemDisplayData, 5> itemData;      // 00
-		ObjectRefHandle containerRef;                             // 88
-		ObjectRefHandle inventoryRef;                             // 8C
-		BSFixedStringCS aButtonText;                              // 90
-		BSFixedString containerName;                              // 98
-		BSFixedStringCS perkButtonText;                           // A0
-		std::int32_t selectedClipIndex;                           // A8
-		stl::enumeration<QuickContainerMode, std::int32_t> mode;  // AC
-		bool perkButtonEnabled;                                   // B0
-		bool isNewContainer;                                      // B1
-		bool addedDroppedItems;                                   // B2
-		bool isLocked;                                            // B3
-		bool buttonAEnabled;                                      // B4
-		bool buttonXEnabled;                                      // B5
-		bool refreshContainerSize;                                // B6
-		bool containerActivated;                                  // B7
-	};
-	static_assert(sizeof(QuickContainerStateData) == 0xB8);
+class PipboyLightEvent : public BSTValueEvent<bool>
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<PipboyLightEvent>;
 
-	class QuickContainerStateEvent :
-		public BSTValueEvent<QuickContainerStateData>  // 00
-	{
-	public:
-	};
-	static_assert(sizeof(QuickContainerStateEvent) == 0xC0);
+  public:
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(1140080)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
+};
+static_assert(sizeof(PipboyLightEvent) == 0x02);
 
-	struct TESActivateEvent
-	{
-	public:
-		[[nodiscard]] static BSTEventSource<TESActivateEvent>* GetEventSource()
-		{
-			using func_t = decltype(&TESActivateEvent::GetEventSource);
-			REL::Relocation<func_t> func{ REL::ID(166230) };
-			return func();
-		}
+struct PlayerAmmoCounts
+{
+  public:
+    // members
+    std::uint32_t clipAmmo;    // 00
+    std::uint32_t reserveAmmo; // 04
+};
+static_assert(sizeof(PlayerAmmoCounts) == 0x08);
 
-		// members
-		NiPointer<TESObjectREFR> objectActivated;  // 00
-		NiPointer<TESObjectREFR> actionRef;        // 08
-	};
-	static_assert(sizeof(TESActivateEvent) == 0x10);
+class PlayerAmmoCountEvent : public BSTValueEvent<PlayerAmmoCounts>
+{
+  public:
+};
+static_assert(sizeof(PlayerAmmoCountEvent) == 0x0C);
 
-	struct TESContainerChangedEvent
-	{
-	public:
-		[[nodiscard]] static BSTEventSource<TESContainerChangedEvent>* GetEventSource()
-		{
-			using func_t = decltype(&TESContainerChangedEvent::GetEventSource);
-			REL::Relocation<func_t> func{ REL::ID(242538) };
-			return func();
-		}
+class PlayerWeaponReloadEvent : public BSTValueEvent<bool>
+{
+  public:
+};
+static_assert(sizeof(PlayerWeaponReloadEvent) == 0x02);
 
-		// members
-		std::uint32_t oldContainerFormID;  // 00
-		std::uint32_t newContainerFormID;  // 04
-		std::uint32_t baseObjectFormID;    // 08
-		std::int32_t itemCount;            // 0C
-		std::uint32_t referenceFormID;     // 10
-		std::uint16_t uniqueID;            // 14
-	};
-	static_assert(sizeof(TESContainerChangedEvent) == 0x18);
+struct PowerArmorLightData
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<PowerArmorLightData>;
 
-	struct TESDeathEvent
-	{
-	public:
-		[[nodiscard]] static BSTEventSource<TESDeathEvent>* GetEventSource()
-		{
-			using func_t = decltype(&TESDeathEvent::GetEventSource);
-			REL::Relocation<func_t> func{ REL::ID(1465690) };
-			return func();
-		}
+  public:
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(120809)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
 
-		// members
-		NiPointer<TESObjectREFR> actorDying;   // 00
-		NiPointer<TESObjectREFR> actorKiller;  // 08
-		bool dead;                             // 10
-	};
-	static_assert(sizeof(TESDeathEvent) == 0x18);
+    // members
+    bool lightOn; // 00
+};
+static_assert(sizeof(PowerArmorLightData) == 0x01);
 
-	struct TESFurnitureEvent
-	{
-	public:
-		enum class FurnitureEventType : std::int32_t
-		{
-			kEnter,
-			kExit
-		};
+struct QuickContainerStateData
+{
+  public:
+    // members
+    BSTSmallArray<InventoryItemDisplayData, 5> itemData;     // 00
+    ObjectRefHandle containerRef;                            // 88
+    ObjectRefHandle inventoryRef;                            // 8C
+    BSFixedStringCS aButtonText;                             // 90
+    BSFixedString containerName;                             // 98
+    BSFixedStringCS perkButtonText;                          // A0
+    std::int32_t selectedClipIndex;                          // A8
+    stl::enumeration<QuickContainerMode, std::int32_t> mode; // AC
+    bool perkButtonEnabled;                                  // B0
+    bool isNewContainer;                                     // B1
+    bool addedDroppedItems;                                  // B2
+    bool isLocked;                                           // B3
+    bool buttonAEnabled;                                     // B4
+    bool buttonXEnabled;                                     // B5
+    bool refreshContainerSize;                               // B6
+    bool containerActivated;                                 // B7
+};
+static_assert(sizeof(QuickContainerStateData) == 0xB8);
 
-		[[nodiscard]] static BSTEventSource<TESFurnitureEvent>* GetEventSource()
-		{
-			using func_t = decltype(&TESFurnitureEvent::GetEventSource);
-			REL::Relocation<func_t> func{ REL::ID(678665) };
-			return func();
-		}
+class QuickContainerStateEvent : public BSTValueEvent<QuickContainerStateData> // 00
+{
+  public:
+};
+static_assert(sizeof(QuickContainerStateEvent) == 0xC0);
 
-		// members
-		NiPointer<TESObjectREFR> actor;                           // 00
-		NiPointer<TESObjectREFR> targetFurniture;                 // 08
-		stl::enumeration<FurnitureEventType, std::int32_t> type;  // 10
-	};
-	static_assert(sizeof(TESFurnitureEvent) == 0x18);
+namespace SPECIALMenuEvent
+{
+struct NameChangedEvent
+{
+  public:
+    // members
+    const char *fullName; // 00
+    bool committed;       // 08
+};
+static_assert(sizeof(NameChangedEvent) == 0x10);
+} // namespace SPECIALMenuEvent
 
-	struct TESMagicEffectApplyEvent
-	{
-	public:
-		// members
-		NiPointer<TESObjectREFR> target;  // 00
-		NiPointer<TESObjectREFR> caster;  // 08
-		std::uint32_t magicEffectFormID;  // 10
-	};
-	static_assert(sizeof(TESMagicEffectApplyEvent) == 0x18);
+class TerminalHacked
+{
+  public:
+    struct Event
+    {
+      public:
+        // members
+        ObjectRefHandle terminal; // 00
+    };
+    static_assert(sizeof(Event) == 0x04);
 
-	class TutorialEvent
-	{
-	public:
-		// members
-		BSFixedString eventName;     // 00
-		const BGSMessage* assocMsg;  // 08
-	};
-	static_assert(sizeof(TutorialEvent) == 0x10);
+    [[nodiscard]] static BSTEventSource<TerminalHacked::Event> *GetEventSource()
+    {
+        using func_t = decltype(&TerminalHacked::GetEventSource);
+        REL::Relocation<func_t> func{REL::ID(425579)};
+        return func();
+    }
+};
+static_assert(std::is_empty_v<TerminalHacked>);
 
-	class UserEventEnabledEvent
-	{
-	public:
-		// members
-		stl::enumeration<UserEvents::USER_EVENT_FLAG, std::int32_t> newUserEventFlag;  // 0
-		stl::enumeration<UserEvents::USER_EVENT_FLAG, std::int32_t> oldUserEventFlag;  // 4
-		stl::enumeration<UserEvents::SENDER_ID, std::int32_t> senderID;                // 8
-	};
-	static_assert(sizeof(UserEventEnabledEvent) == 0xC);
+struct TESActivateEvent
+{
+  public:
+    [[nodiscard]] static BSTEventSource<TESActivateEvent> *GetEventSource()
+    {
+        using func_t = decltype(&TESActivateEvent::GetEventSource);
+        REL::Relocation<func_t> func{REL::ID(166230)};
+        return func();
+    }
 
-	namespace CellAttachDetachEventSource
-	{
-		struct CellAttachDetachEventSourceSingleton :
-			public BSTSingletonImplicit<CellAttachDetachEventSourceSingleton>
-		{
-		public:
-			[[nodiscard]] static CellAttachDetachEventSourceSingleton& GetSingleton()
-			{
-				using func_t = decltype(&CellAttachDetachEventSourceSingleton::GetSingleton);
-				REL::Relocation<func_t> func{ REL::ID(862142) };
-				return func();
-			}
+    // members
+    NiPointer<TESObjectREFR> objectActivated; // 00
+    NiPointer<TESObjectREFR> actionRef;       // 08
+};
+static_assert(sizeof(TESActivateEvent) == 0x10);
 
-			// members
-			BSTEventSource<CellAttachDetachEvent> source;  // 00
-		};
-		static_assert(sizeof(CellAttachDetachEventSourceSingleton) == 0x58);
-	}
+struct TESContainerChangedEvent
+{
+  public:
+    [[nodiscard]] static BSTEventSource<TESContainerChangedEvent> *GetEventSource()
+    {
+        using func_t = decltype(&TESContainerChangedEvent::GetEventSource);
+        REL::Relocation<func_t> func{REL::ID(242538)};
+        return func();
+    }
 
-	struct TESObjectLoadedEvent
-	{
-		uint32_t formId;  //00
-		uint8_t loaded;   //08
-	};
+    // members
+    std::uint32_t oldContainerFormID; // 00
+    std::uint32_t newContainerFormID; // 04
+    std::uint32_t baseObjectFormID;   // 08
+    std::int32_t itemCount;           // 0C
+    std::uint32_t referenceFormID;    // 10
+    std::uint16_t uniqueID;           // 14
+};
+static_assert(sizeof(TESContainerChangedEvent) == 0x18);
 
-	struct TESEquipEvent
-	{
-		Actor* a;
-		uint32_t formId;
-		uint32_t refFormID;
-		uint16_t unk10;
-		bool isEquip;
-	};
+struct TESDeathEvent
+{
+  public:
+    [[nodiscard]] static BSTEventSource<TESDeathEvent> *GetEventSource()
+    {
+        using func_t = decltype(&TESDeathEvent::GetEventSource);
+        REL::Relocation<func_t> func{REL::ID(1465690)};
+        return func();
+    }
 
-	struct BSTransformDeltaEvent
-	{
-		NiMatrix3 deltaRotation;
-		NiPoint4 deltaTranslation;
-		NiPoint4 previousTranslation;
-		NiPoint4 previousRotation;
-		NiPoint4 previousScale;
-		NiPoint4 currentTranslation;
-		NiPoint4 currentRotation;
-		NiPoint4 currentScale;
-	};
+    // members
+    NiPointer<TESObjectREFR> actorDying;  // 00
+    NiPointer<TESObjectREFR> actorKiller; // 08
+    bool dead;                            // 10
+};
+static_assert(sizeof(TESDeathEvent) == 0x18);
 
-	struct DamageImpactData
-	{
-		NiPoint4 hitPos;
-		NiPoint4 hitDirection;
-		NiPoint4 projectileDir;
-		bhkNPCollisionObject* collisionObj;
-	};
-	static_assert(sizeof(DamageImpactData) == 0x38);
+struct TESFurnitureEvent
+{
+  public:
+    enum class FurnitureEventType : std::int32_t
+    {
+        kEnter,
+        kExit
+    };
 
-	class VATSCommand;
-	class HitData
-	{
-	public:
-		void SetAllDamageToZero()
-		{
-			flags &= 0xFFFFFE07;
-			calculatedBaseDamage = 0.f;
-			blockedDamage = 0.f;
-			reducedDamage = 0.f;
-			blockStaggerMult = 0.f;
-		}
+    [[nodiscard]] static BSTEventSource<TESFurnitureEvent> *GetEventSource()
+    {
+        using func_t = decltype(&TESFurnitureEvent::GetEventSource);
+        REL::Relocation<func_t> func{REL::ID(678665)};
+        return func();
+    }
 
-		DamageImpactData impactData;                                                  //0x00
-		int8_t gap38[8];                                                              //0x38
-		ObjectRefHandle attackerHandle;                                               //0x40;
-		ObjectRefHandle victimHandle;                                                 //0x44;
-		ObjectRefHandle sourceHandle;                                                 //0x48;
-		int8_t gap4C[4];                                                              //0x4C;
-		BGSAttackData* attackData;                                                    //0x50;
-		BGSObjectInstance source;                                                     //0x58;
-		MagicItem* effect;                                                            //0x68;
-		SpellItem* spellItem;                                                         //0x70;
-		VATSCommand* VATScmd;                                                         //0x78;
-		TESAmmo* ammo;                                                                //0x80;
-		BSTArray<BSTTuple<TESForm*, BGSTypedFormValuePair::SharedVal>>* damageTypes;  //0x88;
-		float calculatedBaseDamage;                                                   //0x90;
-		float baseDamage;                                                             //0x94;
-		float totalDamage;                                                            //0x98;
-		float blockedDamage;                                                          //0x9C;
-		float blockMult;                                                              //0xA0;
-		float reducedDamage;                                                          //0xA4;
-		float field_A8;                                                               //0xA8;
-		float blockStaggerMult;                                                       //0xAC;
-		float sneakAttackMult;                                                        //0xB0;
-		float field_B4;                                                               //0xB4;
-		float field_B8;                                                               //0xB8;
-		float field_BC;                                                               //0xBC;
-		float criticalDamageMult;                                                     //0xC0;
-		uint32_t flags;                                                               //0xC4;
-		BGSEquipIndex equipIndex;                                                     //0xC8;
-		uint32_t materialType;                                                        //0xCC;
-		int32_t bodypartType;                                                         //0xD0
-		int8_t gapD4[4];                                                              //0xD4
-	};
-	static_assert(sizeof(HitData) == 0xD8);
+    // members
+    NiPointer<TESObjectREFR> actor;                          // 00
+    NiPointer<TESObjectREFR> targetFurniture;                // 08
+    stl::enumeration<FurnitureEventType, std::int32_t> type; // 10
+};
+static_assert(sizeof(TESFurnitureEvent) == 0x18);
 
-	class TESHitEvent
-	{
-	public:
-		HitData hitdata;
-		int8_t gapD8[8];
-		TESObjectREFR* victim;
-		TESObjectREFR* attacker;
-		BSFixedString matName;
-		uint32_t sourceFormID;
-		uint32_t projFormID;
-		bool hasHitData;
-		int8_t gapD1[7];
-	};
-	static_assert(sizeof(TESHitEvent) == 0x108);
+struct TESMagicEffectApplyEvent
+{
+  public:
+    // members
+    NiPointer<TESObjectREFR> target; // 00
+    NiPointer<TESObjectREFR> caster; // 08
+    std::uint32_t magicEffectFormID; // 10
+};
+static_assert(sizeof(TESMagicEffectApplyEvent) == 0x18);
 
-	class HitEventSource : public BSTEventSource<TESHitEvent>
-	{
-	public:
-		[[nodiscard]] static HitEventSource* GetSingleton()
-		{
-			REL::Relocation<HitEventSource*> singleton{ REL::ID(989868) };
-			return singleton.get();
-		}
-	};
+class TutorialEvent
+{
+  public:
+    // members
+    BSFixedString eventName;    // 00
+    const BGSMessage *assocMsg; // 08
+};
+static_assert(sizeof(TutorialEvent) == 0x10);
 
-	class ObjectLoadedEventSource : public BSTEventSource<TESObjectLoadedEvent>
-	{
-	public:
-		[[nodiscard]] static ObjectLoadedEventSource* GetSingleton()
-		{
-			REL::Relocation<ObjectLoadedEventSource*> singleton{ REL::ID(416662) };
-			return singleton.get();
-		}
-	};
+struct UIAdvanceMenusFunctionCompleteEvent
+{
+  private:
+    using EventSource_t = BSTGlobalEvent::EventSource<UIAdvanceMenusFunctionCompleteEvent>;
 
-	class EquipEventSource : public BSTEventSource<TESEquipEvent>
-	{
-	public:
-		[[nodiscard]] static EquipEventSource* GetSingleton()
-		{
-			REL::Relocation<EquipEventSource*> singleton{ REL::ID(485633) };
-			return singleton.get();
-		}
-	};
+  public:
+    [[nodiscard]] static EventSource_t *GetEventSource()
+    {
+        REL::Relocation<EventSource_t **> singleton{REL::ID(1067039)};
+        if (!*singleton)
+        {
+            *singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+        }
+        return *singleton;
+    }
+};
+static_assert(std::is_empty_v<UIAdvanceMenusFunctionCompleteEvent>);
 
-	class MGEFApplyEventSource : public BSTEventSource<TESMagicEffectApplyEvent>
-	{
-	public:
-		[[nodiscard]] static MGEFApplyEventSource* GetSingleton()
-		{
-			REL::Relocation<MGEFApplyEventSource*> singleton{ REL::ID(1481228) };
-			return singleton.get();
-		}
-	};
-}
+class UserEventEnabledEvent
+{
+  public:
+    // members
+    stl::enumeration<UserEvents::USER_EVENT_FLAG, std::int32_t> newUserEventFlag; // 0
+    stl::enumeration<UserEvents::USER_EVENT_FLAG, std::int32_t> oldUserEventFlag; // 4
+    stl::enumeration<UserEvents::SENDER_ID, std::int32_t> senderID;               // 8
+};
+static_assert(sizeof(UserEventEnabledEvent) == 0xC);
+
+namespace CellAttachDetachEventSource
+{
+struct CellAttachDetachEventSourceSingleton : public BSTSingletonImplicit<CellAttachDetachEventSourceSingleton>
+{
+  public:
+    [[nodiscard]] static CellAttachDetachEventSourceSingleton &GetSingleton()
+    {
+        using func_t = decltype(&CellAttachDetachEventSourceSingleton::GetSingleton);
+        REL::Relocation<func_t> func{REL::ID(862142)};
+        return func();
+    }
+
+    // members
+    BSTEventSource<CellAttachDetachEvent> source; // 00
+};
+static_assert(sizeof(CellAttachDetachEventSourceSingleton) == 0x58);
+} // namespace CellAttachDetachEventSource
+
+struct TESObjectLoadedEvent
+{
+    uint32_t formId; // 00
+    uint8_t loaded;  // 08
+};
+
+struct TESEquipEvent
+{
+    Actor *a;
+    uint32_t formId;
+    uint32_t refFormID;
+    uint16_t unk10;
+    bool isEquip;
+};
+
+struct BSTransformDeltaEvent
+{
+    NiMatrix3 deltaRotation;
+    NiPoint4 deltaTranslation;
+    NiPoint4 previousTranslation;
+    NiPoint4 previousRotation;
+    NiPoint4 previousScale;
+    NiPoint4 currentTranslation;
+    NiPoint4 currentRotation;
+    NiPoint4 currentScale;
+};
+
+struct DamageImpactData
+{
+    NiPoint4 hitPos;
+    NiPoint4 hitDirection;
+    NiPoint4 projectileDir;
+    bhkNPCollisionObject *collisionObj;
+};
+static_assert(sizeof(DamageImpactData) == 0x38);
+
+class VATSCommand;
+class HitData
+{
+  public:
+    enum class Flag
+    {
+        kBlocked = 1 << 0,
+        kBlockWithWeapon = 1 << 1,
+        kBlockCandidate = 1 << 2,
+        kCritical = 1 << 3,
+        kCriticalOnDeath = 1 << 4,
+        kFatal = 1 << 5,
+        kDismemberLimb = 1 << 6,
+        kExplodeLimb = 1 << 7,
+        kCrippleLimb = 1 << 8,
+        kDisarm = 1 << 9,
+        kDisableWeapon = 1 << 10,
+        kSneakAttack = 1 << 11,
+        kIgnoreCritical = 1 << 12,
+        kPredictDamage = 1 << 13,
+        kPredictBaseDamage = 1 << 14,
+        kBash = 1 << 15,
+        kTimedBash = 1 << 16,
+        kPowerAttack = 1 << 17,
+        kMeleeAttack = 1 << 18,
+        kRicochet = 1 << 19,
+        kExplosion = 1 << 20
+    };
+
+    void SetAllDamageToZero()
+    {
+        flags &= 0xFFFFFE07;
+        HealthDamage = 0.f;
+        targetedLimbDamagePercent = 0.f;
+        reducedDamage = 0.f;
+        blockStaggerMult = 0.f;
+    }
+
+    DamageImpactData impactData;
+    int8_t gap38[8];
+    ObjectRefHandle attackerHandle;
+    ObjectRefHandle victimHandle;
+    ObjectRefHandle sourceHandle;
+    int8_t gap4C[4];
+    BGSAttackData *attackData;
+    BGSObjectInstance source;
+    MagicItem *effect;
+    SpellItem *spellItem;
+    VATSCommand *VATScmd;
+    TESAmmo *ammo;
+    BSTArray<BSTTuple<TESForm *, BGSTypedFormValuePair::SharedVal>> *damageTypes;
+    float HealthDamage;
+    float baseDamage;
+    float totalDamage;
+    float targetedLimbDamagePercent;
+    float blockMult;
+    float reducedDamage;
+    float field_A8;
+    float blockStaggerMult;
+    float sneakAttackMult;
+    float field_B4;
+    float field_B8;
+    float field_BC;
+    float criticalDamageMult;
+    uint32_t flags;
+    BGSEquipIndex equipIndex;
+    uint32_t materialType;
+    int32_t bodypartType;
+    int8_t gapD4[4];
+};
+static_assert(sizeof(HitData) == 0xD8);
+
+class TESHitEvent
+{
+  public:
+    HitData hitdata;
+    int8_t gapD8[8];
+    TESObjectREFR *victim;
+    TESObjectREFR *attacker;
+    BSFixedString matName;
+    uint32_t sourceFormID;
+    uint32_t projFormID;
+    bool hasHitData;
+    int8_t gapD1[7];
+};
+static_assert(sizeof(TESHitEvent) == 0x108);
+
+class HitEventSource : public BSTEventSource<TESHitEvent>
+{
+  public:
+    [[nodiscard]] static HitEventSource *GetSingleton()
+    {
+        REL::Relocation<HitEventSource *> singleton{REL::ID(989868)};
+        return singleton.get();
+    }
+};
+
+class ObjectLoadedEventSource : public BSTEventSource<TESObjectLoadedEvent>
+{
+  public:
+    [[nodiscard]] static ObjectLoadedEventSource *GetSingleton()
+    {
+        REL::Relocation<ObjectLoadedEventSource *> singleton{REL::ID(416662)};
+        return singleton.get();
+    }
+};
+
+class EquipEventSource : public BSTEventSource<TESEquipEvent>
+{
+  public:
+    [[nodiscard]] static EquipEventSource *GetSingleton()
+    {
+        REL::Relocation<EquipEventSource *> singleton{REL::ID(485633)};
+        return singleton.get();
+    }
+};
+
+class MGEFApplyEventSource : public BSTEventSource<TESMagicEffectApplyEvent>
+{
+  public:
+    [[nodiscard]] static MGEFApplyEventSource *GetSingleton()
+    {
+        REL::Relocation<MGEFApplyEventSource *> singleton{REL::ID(1481228)};
+        return singleton.get();
+    }
+};
+} // namespace RE

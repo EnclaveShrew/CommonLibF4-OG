@@ -2,5 +2,5 @@
 
 namespace Papyrus
 {
-	bool F4SEAPI Bind(RE::BSScript::IVirtualMachine* a_vm);
+bool F4SEAPI Bind(RE::BSScript::IVirtualMachine *a_vm);
 }

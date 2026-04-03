@@ -2,43 +2,49 @@
 
 namespace RE
 {
-	class hkBool
-	{
-	public:
-		~hkBool() noexcept {}  // intentional
+class hkBool
+{
+  public:
+    ~hkBool() noexcept
+    {
+    } // intentional
 
-		bool b;
-	};
+    bool b;
+};
 
-	template <class E, class U>
-	using hkEnum = stl::enumeration<E, U>;
+template <class E, class U>
+using hkEnum = stl::enumeration<E, U>;
 
-	template <class E, class U>
-	using hkFlags = stl::enumeration<E, U>;
+template <class E, class U>
+using hkFlags = stl::enumeration<E, U>;
 
-	template <class T>
-	class hkPadSpu
-	{
-	public:
-		~hkPadSpu() noexcept {}  // NOLINT(modernize-use-equals-default)
+template <class T>
+class hkPadSpu
+{
+  public:
+    ~hkPadSpu() noexcept
+    {
+    } // NOLINT(modernize-use-equals-default)
 
-		// members
-		T storage;
-	};
+    // members
+    T storage;
+};
 
-	enum class hkResultEnum
-	{
-		kSuccess,
-		kFailure
-	};
+enum class hkResultEnum
+{
+    kSuccess,
+    kFailure
+};
 
-	struct hkResult
-	{
-	public:
-		~hkResult() noexcept {}  // NOLINT(modernize-use-equals-default)
+struct hkResult
+{
+  public:
+    ~hkResult() noexcept
+    {
+    } // NOLINT(modernize-use-equals-default)
 
-		// members
-		hkResultEnum e;  // 0
-	};
-	static_assert(sizeof(hkResult) == 0x4);
-}
+    // members
+    hkResultEnum e; // 0
+};
+static_assert(sizeof(hkResult) == 0x4);
+} // namespace RE

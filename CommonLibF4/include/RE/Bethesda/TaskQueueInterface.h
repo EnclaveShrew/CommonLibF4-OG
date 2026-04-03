@@ -1,47 +1,70 @@
 #pragma once
 
-#include <RE/Bethesda/TESBoundObjects.h>
-#include <RE/Bethesda/TESObjectREFRs.h>
-#include <RE/NetImmerse/NiAVObject.h>
-#include <REL/Relocation.h>
-
 namespace RE
 {
-	class TaskQueueInterface
-	{
-	public:
-		static TaskQueueInterface* GetSingleton()
-		{
-			REL::Relocation<TaskQueueInterface**> singleton{ REL::ID(7491) };
-			return *singleton;
-		}
+enum class DEFAULT_OBJECT;
 
-		void QueueRebuildBendableSpline(TESObjectREFR* ref, bool rebuildCollision, NiAVObject* target)
-		{
-			using func_t = decltype(&TaskQueueInterface::QueueRebuildBendableSpline);
-			REL::Relocation<func_t> func{ REL::ID(198419) };
-			return func(this, ref, rebuildCollision, target);
-		}
+class BSPackedTaskQueue;
+class NiAVObject;
+class TESAmmo;
+class TESObjectREFR;
+class TESObjectWEAP;
 
-		void QueueShow1stPerson(bool shouldShow)
-		{
-			using func_t = decltype(&TaskQueueInterface::QueueShow1stPerson);
-			REL::Relocation<func_t> func{ REL::ID(994377) };
-			return func(this, shouldShow);
-		}
+class TaskQueueInterface
+{
+  public:
+    static TaskQueueInterface *GetSingleton()
+    {
+        REL::Relocation<TaskQueueInterface **> singleton{REL::ID(7491)};
+        return *singleton;
+    }
 
-		void QueueUpdate3D(TESObjectREFR* ref, std::uint32_t unk = 0)
-		{
-			using func_t = decltype(&TaskQueueInterface::QueueUpdate3D);
-			REL::Relocation<func_t> func{ REL::ID(581890) };
-			return func(this, ref, unk);
-		}
+    void QueueClosePipboy()
+    {
+        using func_t = decltype(&TaskQueueInterface::QueueClosePipboy);
+        REL::Relocation<func_t> func{REL::ID(69886)};
+        return func(this);
+    }
 
-		void QueueWeaponFire(TESObjectWEAP* wep, TESObjectREFR* shooter, BGSEquipIndex index, TESAmmo* ammo)
-		{
-			using func_t = decltype(&TaskQueueInterface::QueueWeaponFire);
-			REL::Relocation<func_t> func{ REL::ID(15449) };
-			return func(this, wep, shooter, index, ammo);
-		}
-	};
-}
+    void QueueRebuildBendableSpline(TESObjectREFR &a_ref, bool a_createPhysics, NiAVObject *a_childNode)
+    {
+        using func_t = decltype(&TaskQueueInterface::QueueRebuildBendableSpline);
+        REL::Relocation<func_t> func{REL::ID(198419)};
+        return func(this, a_ref, a_createPhysics, a_childNode);
+    }
+
+    void QueueShow1stPerson(bool a_show1stPerson)
+    {
+        using func_t = decltype(&TaskQueueInterface::QueueShow1stPerson);
+        REL::Relocation<func_t> func{REL::ID(994377)};
+        return func(this, a_show1stPerson);
+    }
+
+    void QueueShowPipboy(DEFAULT_OBJECT a_animType)
+    {
+        using func_t = decltype(&TaskQueueInterface::QueueShowPipboy);
+        REL::Relocation<func_t> func{REL::ID(1133684)};
+        return func(this, a_animType);
+    }
+
+    void QueueUpdate3D(TESObjectREFR *a_ref, std::uint32_t a_flags)
+    {
+        using func_t = decltype(&TaskQueueInterface::QueueUpdate3D);
+        REL::Relocation<func_t> func{REL::ID(581890)};
+        return func(this, a_ref, a_flags);
+    }
+
+    void QueueWeaponFire(TESObjectWEAP *a_weapon, TESObjectREFR *a_refObject, BGSEquipIndex a_equipIndex, TESAmmo *a_ammo)
+    {
+        using func_t = decltype(&TaskQueueInterface::QueueWeaponFire);
+        REL::Relocation<func_t> func{REL::ID(15449)};
+        return func(this, a_weapon, a_refObject, a_equipIndex, a_ammo);
+    }
+
+    // members
+    BSPackedTaskQueue *queue;          // 00
+    BSPackedTaskQueue *secondaryQueue; // 08
+    BSPackedTaskQueue *activeQueue;    // 18
+};
+static_assert(sizeof(TaskQueueInterface) == 0x18);
+} // namespace RE

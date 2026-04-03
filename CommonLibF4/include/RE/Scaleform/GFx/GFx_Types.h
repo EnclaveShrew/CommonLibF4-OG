@@ -8,25 +8,25 @@
 
 namespace RE::Scaleform::GFx
 {
-	using Render::Color;
-	using Render::Matrix2F;
-	using Render::Matrix3F;
-	using Render::Matrix4F;
-	using Render::Point;
-	using Render::PointF;
-	using Render::Rect;
-	using Render::RectF;
+using Render::Color;
+using Render::Matrix2F;
+using Render::Matrix3F;
+using Render::Matrix4F;
+using Render::Point;
+using Render::PointF;
+using Render::Rect;
+using Render::RectF;
 
-	enum class PlayState
-	{
-		kPlaying,
-		kStopped
-	};
+enum class PlayState
+{
+    kPlaying,
+    kStopped
+};
 
-	enum class FocusMovedType
-	{
-		kByMouse = 1,
-		kByKeyboard,
-		kByAS
-	};
-}
+enum class FocusMovedType
+{
+    kByMouse = 1,
+    kByKeyboard,
+    kByAS
+};
+} // namespace RE::Scaleform::GFx

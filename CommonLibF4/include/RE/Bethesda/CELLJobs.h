@@ -2,8 +2,8 @@
 
 namespace RE
 {
-	struct CELLJobs
-	{
-		struct AnimatedRefJobData;
-	};
-}
+struct CELLJobs
+{
+    struct AnimatedRefJobData;
+};
+} // namespace RE

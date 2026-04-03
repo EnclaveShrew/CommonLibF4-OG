@@ -2,12 +2,14 @@
 
 namespace RE
 {
-	template <class T>
-	class hkRefPtr
-	{
-	public:
-		~hkRefPtr() noexcept {}  // intentional
+template <class T>
+class hkRefPtr
+{
+  public:
+    ~hkRefPtr() noexcept
+    {
+    } // intentional
 
-		T* _ptr;
-	};
-}
+    T *_ptr;
+};
+} // namespace RE

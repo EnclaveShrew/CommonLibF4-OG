@@ -7,9 +7,9 @@
 namespace WinAPI = F4SE::WinAPI;
 
 #ifdef NDEBUG
-#	include <spdlog/sinks/basic_file_sink.h>
+#include <spdlog/sinks/basic_file_sink.h>
 #else
-#	include <spdlog/sinks/msvc_sink.h>
+#include <spdlog/sinks/msvc_sink.h>
 #endif
 #pragma warning(pop)
 
@@ -17,7 +17,7 @@ namespace WinAPI = F4SE::WinAPI;
 
 namespace logger
 {
-	using namespace F4SE::log;
+using namespace F4SE::log;
 }
 
 namespace stl = F4SE::stl;

@@ -33,42 +33,43 @@
 
 namespace Papyrus
 {
-	bool F4SEAPI Bind(RE::BSScript::IVirtualMachine* a_vm)
-	{
-		if (!a_vm) {
-			return false;
-		}
+bool F4SEAPI Bind(RE::BSScript::IVirtualMachine *a_vm)
+{
+    if (!a_vm)
+    {
+        return false;
+    }
 
-		Actor::Bind(*a_vm);
-		ActorBase::Bind(*a_vm);
-		Armor::Bind(*a_vm);
-		ArmorAddon::Bind(*a_vm);
-		Cell::Bind(*a_vm);
-		Component::Bind(*a_vm);
-		ConstructibleObject::Bind(*a_vm);
-		DefaultObject::Bind(*a_vm);
-		EncounterZone::Bind(*a_vm);
-		EquipSlot::Bind(*a_vm);
-		F4SE::Bind(*a_vm);
-		Form::Bind(*a_vm);
-		Game::Bind(*a_vm);
-		HeadPart::Bind(*a_vm);
-		Input::Bind(*a_vm);
-		InstanceData::Bind(*a_vm);
-		Location::Bind(*a_vm);
-		MatSwap::Bind(*a_vm);
-		Math::Bind(*a_vm);
-		MiscObject::Bind(*a_vm);
-		ObjectMod::Bind(*a_vm);
-		ObjectReference::Bind(*a_vm);
-		Perk::Bind(*a_vm);
-		ScriptObject::Bind(*a_vm);
-		UI::Bind(*a_vm);
-		Utility::Bind(*a_vm);
-		WaterType::Bind(*a_vm);
-		Weapon::Bind(*a_vm);
+    Actor::Bind(*a_vm);
+    ActorBase::Bind(*a_vm);
+    Armor::Bind(*a_vm);
+    ArmorAddon::Bind(*a_vm);
+    Cell::Bind(*a_vm);
+    Component::Bind(*a_vm);
+    ConstructibleObject::Bind(*a_vm);
+    DefaultObject::Bind(*a_vm);
+    EncounterZone::Bind(*a_vm);
+    EquipSlot::Bind(*a_vm);
+    F4SE::Bind(*a_vm);
+    Form::Bind(*a_vm);
+    Game::Bind(*a_vm);
+    HeadPart::Bind(*a_vm);
+    Input::Bind(*a_vm);
+    InstanceData::Bind(*a_vm);
+    Location::Bind(*a_vm);
+    MatSwap::Bind(*a_vm);
+    Math::Bind(*a_vm);
+    MiscObject::Bind(*a_vm);
+    ObjectMod::Bind(*a_vm);
+    ObjectReference::Bind(*a_vm);
+    Perk::Bind(*a_vm);
+    ScriptObject::Bind(*a_vm);
+    UI::Bind(*a_vm);
+    Utility::Bind(*a_vm);
+    WaterType::Bind(*a_vm);
+    Weapon::Bind(*a_vm);
 
-		logger::info("bound all scripts"sv);
-		return true;
-	}
+    logger::info("bound all scripts");
+    return true;
 }
+} // namespace Papyrus

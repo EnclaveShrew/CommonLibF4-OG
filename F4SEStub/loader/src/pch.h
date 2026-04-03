@@ -22,7 +22,7 @@
 #define NOGDI
 #define NOKERNEL
 #define NOUSER
-//#define NONLS
+// #define NONLS
 #define NOMB
 #define NOMEMMGR
 #define NOMETAFILE
@@ -67,6 +67,7 @@
 #pragma warning(push, 0)
 #include <args.hxx>
 #include <fmt/format.h>
+#include <fmt/ostream.h>
 #include <frozen/map.h>
 #include <nowide/convert.hpp>
 #include <nowide/iostream.hpp>
