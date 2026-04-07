@@ -2,6 +2,9 @@ name: Scripted maintenance
 
 on: [ push, pull_request_target ]
 
+permissions:
+  contents: write
+
 jobs:
   maintenance:
     runs-on: ubuntu-latest
