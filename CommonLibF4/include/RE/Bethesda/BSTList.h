@@ -58,8 +58,9 @@ class BSSimpleList
                     typename iterator_base<V>::reference,
                     reference>,
                 int> = 0>
-        iterator_base(iterator_base<V> a_rhs) noexcept : _proxy(a_rhs._proxy),
-                                                         _cur(a_rhs._cur)
+        iterator_base(iterator_base<V> a_rhs) noexcept
+            : _proxy(a_rhs._proxy),
+              _cur(a_rhs._cur)
         {
         }
 
@@ -118,8 +119,9 @@ class BSSimpleList
         template <class>
         friend class BSSimpleList;
 
-        iterator_base(BSSimpleList<T> *a_proxy, std::optional<node_type *> a_cur) noexcept : _proxy(a_proxy),
-                                                                                             _cur(a_cur)
+        iterator_base(BSSimpleList<T> *a_proxy, std::optional<node_type *> a_cur) noexcept
+            : _proxy(a_proxy),
+              _cur(a_cur)
         {
         }
 
@@ -166,7 +168,8 @@ class BSSimpleList
     }
 
     // 8)
-    BSSimpleList(BSSimpleList &&a_rhs) noexcept : _root(std::exchange(a_rhs._root, node_type{}))
+    BSSimpleList(BSSimpleList &&a_rhs) noexcept
+        : _root(std::exchange(a_rhs._root, node_type{}))
     {
     }
 

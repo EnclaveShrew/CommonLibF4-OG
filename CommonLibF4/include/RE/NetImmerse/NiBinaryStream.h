@@ -28,7 +28,7 @@ class __declspec(novtable) NiBinaryStream
     virtual std::size_t GetPosition() const
     {
         return absoluteCurrentPos;
-    }                                                                           // 03
+    } // 03
     virtual void GetBufferInfo(BufferInfo &a_info);                             // 04
     virtual std::size_t DoRead(void *a_buffer, std::size_t a_bytes) = 0;        // 05
     virtual std::size_t DoWrite(const void *a_buffer, std::size_t a_bytes) = 0; // 06

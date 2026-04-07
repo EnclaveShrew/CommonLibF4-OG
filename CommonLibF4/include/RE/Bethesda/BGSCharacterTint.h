@@ -55,7 +55,7 @@ class __declspec(novtable) Entry
     virtual float GetDefaultValue()
     {
         return 0.0F;
-    }                                           // 01
+    } // 01
     virtual void InitItem(TESForm *a_owner);    // 02
     virtual void CopyData(Entry *a_copy);       // 03
     virtual void LoadImpl(TESFile *a_file) = 0; // 04

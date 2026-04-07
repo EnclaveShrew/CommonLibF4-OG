@@ -13,7 +13,7 @@ struct MemoryRegion
         base = b;
         size = s;
     }
-    MemoryRegion() {};
+    MemoryRegion(){};
     MemoryRegion(uintptr_t b, size_t s)
     {
         Set(b, s);

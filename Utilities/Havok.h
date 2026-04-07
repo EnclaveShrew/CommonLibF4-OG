@@ -451,7 +451,8 @@ class hknpShapeTagCodec : public hkReferencedObject
         UFM_CODEC,
         USER_CODEC
     };
-    hknpShapeTagCodec(CodecType type) : m_type(type)
+    hknpShapeTagCodec(CodecType type)
+        : m_type(type)
     {
     }
 
@@ -512,7 +513,7 @@ struct hknpQueryFilterData
 struct hkcdRay
 {
   public:
-    hkcdRay() {};
+    hkcdRay(){};
     float getFraction()
     {
         return m_direction.w;

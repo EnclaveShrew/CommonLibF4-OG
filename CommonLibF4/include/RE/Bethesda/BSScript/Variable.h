@@ -216,11 +216,13 @@ class Variable
     TypeInfo varType; // 00
     union V {
         // NOLINTNEXTLINE(modernize-use-equals-default)
-        V() : v(nullptr)
+        V()
+            : v(nullptr)
         {
         }
 
-        V(V &&a_rhs) noexcept : v(std::exchange(a_rhs.v, nullptr))
+        V(V &&a_rhs) noexcept
+            : v(std::exchange(a_rhs.v, nullptr))
         {
         }
 

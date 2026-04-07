@@ -67,7 +67,7 @@ namespace Internal
 class CodeTasklet;
 
 class VirtualMachine : public IVirtualMachine, // 0000
-                       // IVM -> public BSIntrusiveRefCounted  // 0008
+                                               // IVM -> public BSIntrusiveRefCounted  // 0008
                        public IVMObjectBindInterface,    // 0010
                        public IVMSaveLoadInterface,      // 0018
                        public IVMDebugInterface,         // 0020

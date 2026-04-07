@@ -257,11 +257,13 @@ class Version
 
     constexpr Version() noexcept = default;
 
-    explicit constexpr Version(std::array<value_type, 4> a_version) noexcept : _impl(a_version)
+    explicit constexpr Version(std::array<value_type, 4> a_version) noexcept
+        : _impl(a_version)
     {
     }
 
-    constexpr Version(value_type a_v1, value_type a_v2 = 0, value_type a_v3 = 0, value_type a_v4 = 0) noexcept : _impl{a_v1, a_v2, a_v3, a_v4}
+    constexpr Version(value_type a_v1, value_type a_v2 = 0, value_type a_v3 = 0, value_type a_v4 = 0) noexcept
+        : _impl{a_v1, a_v2, a_v3, a_v4}
     {
     }
 
@@ -390,9 +392,10 @@ class Segment
 
     constexpr Segment() noexcept = default;
 
-    constexpr Segment(std::uintptr_t a_proxyBase, std::uintptr_t a_address, std::uintptr_t a_size) noexcept : _proxyBase(a_proxyBase),
-                                                                                                              _address(a_address),
-                                                                                                              _size(a_size)
+    constexpr Segment(std::uintptr_t a_proxyBase, std::uintptr_t a_address, std::uintptr_t a_size) noexcept
+        : _proxyBase(a_proxyBase),
+          _address(a_address),
+          _size(a_size)
     {
     }
 
@@ -581,7 +584,8 @@ class IDDatabase
                 });
         }
 
-        Offset2ID() : Offset2ID(std::execution::sequenced_policy{})
+        Offset2ID()
+            : Offset2ID(std::execution::sequenced_policy{})
         {
         }
 
@@ -721,7 +725,8 @@ class Offset
   public:
     constexpr Offset() noexcept = default;
 
-    explicit constexpr Offset(std::size_t a_offset) noexcept : _offset(a_offset)
+    explicit constexpr Offset(std::size_t a_offset) noexcept
+        : _offset(a_offset)
     {
     }
 
@@ -754,7 +759,8 @@ class ID
   public:
     constexpr ID() noexcept = default;
 
-    explicit constexpr ID(std::uint64_t a_id) noexcept : _id(a_id)
+    explicit constexpr ID(std::uint64_t a_id) noexcept
+        : _id(a_id)
     {
     }
 
@@ -798,19 +804,23 @@ class Relocation
 
     constexpr Relocation() noexcept = default;
 
-    explicit constexpr Relocation(std::uintptr_t a_address) noexcept : _impl{a_address}
+    explicit constexpr Relocation(std::uintptr_t a_address) noexcept
+        : _impl{a_address}
     {
     }
 
-    explicit Relocation(Offset a_offset) : _impl{a_offset.address()}
+    explicit Relocation(Offset a_offset)
+        : _impl{a_offset.address()}
     {
     }
 
-    explicit Relocation(ID a_id) : _impl{a_id.address()}
+    explicit Relocation(ID a_id)
+        : _impl{a_id.address()}
     {
     }
 
-    explicit Relocation(ID a_id, std::ptrdiff_t a_offset) : _impl{a_id.address() + a_offset}
+    explicit Relocation(ID a_id, std::ptrdiff_t a_offset)
+        : _impl{a_id.address() + a_offset}
     {
     }
 

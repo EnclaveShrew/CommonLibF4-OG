@@ -30,7 +30,7 @@ class __declspec(novtable) IFormFactory
     [[nodiscard]] virtual const char *GetObjectName() const
     {
         return nullptr;
-    }                                                                     // 04
+    } // 04
     [[nodiscard]] virtual OBJECT_TYPE GetObjectType() const;              // 05
     [[nodiscard]] virtual OBJECT_CATEGORY_TYPE GetObjectCategory() const; // 06
     [[nodiscard]] virtual BGSMod::Property::BridgeI *GetPropertyBridge() const
@@ -98,7 +98,7 @@ class DefaultObjectFormFactory : public IFormFactory // 00
     [[nodiscard]] const char *GetObjectName() const override
     {
         return "DefaultObject";
-    }                                                                      // 04
+    } // 04
     [[nodiscard]] OBJECT_TYPE GetObjectType() const override;              // 05
     [[nodiscard]] OBJECT_CATEGORY_TYPE GetObjectCategory() const override; // 06
 

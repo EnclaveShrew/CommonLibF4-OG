@@ -51,8 +51,9 @@ class BasicDelayFunctor : public RE::GameScript::DelayFunctor
   public:
     using FunctorType = RE::GameScript::DelayFunctor::FunctorType;
 
-    BasicDelayFunctor(std::uint32_t a_stackID, std::function<T()> a_fn) : super(a_stackID),
-                                                                          _fn(std::move(a_fn))
+    BasicDelayFunctor(std::uint32_t a_stackID, std::function<T()> a_fn)
+        : super(a_stackID),
+          _fn(std::move(a_fn))
     {
     }
 

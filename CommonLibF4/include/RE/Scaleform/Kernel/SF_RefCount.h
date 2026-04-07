@@ -87,13 +87,15 @@ class Ptr
                 Y *,
                 element_type *>,
             int> = 0>
-    explicit Ptr(Y *a_rhs) : _ptr(a_rhs)
+    explicit Ptr(Y *a_rhs)
+        : _ptr(a_rhs)
     {
         TryAttach();
     }
 
     // 9a
-    Ptr(const Ptr &a_rhs) : _ptr(a_rhs._ptr)
+    Ptr(const Ptr &a_rhs)
+        : _ptr(a_rhs._ptr)
     {
         TryAttach();
     }
@@ -106,13 +108,15 @@ class Ptr
                 Y *,
                 element_type *>,
             int> = 0>
-    Ptr(const Ptr<Y> &a_rhs) : _ptr(a_rhs._ptr)
+    Ptr(const Ptr<Y> &a_rhs)
+        : _ptr(a_rhs._ptr)
     {
         TryAttach();
     }
 
     // 10a
-    Ptr(Ptr &&a_rhs) noexcept : _ptr(a_rhs._ptr)
+    Ptr(Ptr &&a_rhs) noexcept
+        : _ptr(a_rhs._ptr)
     {
         a_rhs._ptr = nullptr;
     }
@@ -125,7 +129,8 @@ class Ptr
                 Y *,
                 element_type *>,
             int> = 0>
-    Ptr(Ptr<Y> &&a_rhs) noexcept : _ptr(a_rhs._ptr)
+    Ptr(Ptr<Y> &&a_rhs) noexcept
+        : _ptr(a_rhs._ptr)
     {
         a_rhs._ptr = nullptr;
     }

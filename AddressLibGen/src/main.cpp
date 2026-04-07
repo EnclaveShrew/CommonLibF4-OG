@@ -34,7 +34,8 @@ class Version
 
     constexpr Version() noexcept = default;
 
-    constexpr Version(std::array<value_type, 4> a_version) noexcept : _impl(a_version)
+    constexpr Version(std::array<value_type, 4> a_version) noexcept
+        : _impl(a_version)
     {
     }
 

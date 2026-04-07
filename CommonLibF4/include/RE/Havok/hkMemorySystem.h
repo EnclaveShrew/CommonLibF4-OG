@@ -53,7 +53,7 @@ class __declspec(novtable) hkMemorySystem
     virtual bool HeapCanAllocTotal([[maybe_unused]] std::int32_t a_numBytes)
     {
         return true;
-    }                                                                // 08
+    } // 08
     virtual void PrintStatistics(hkOstream &a_ostr) const = 0;       // 09
     virtual void GetMemoryStatistics(MemoryStatistics &) = 0;        // 0A
     virtual hkMemoryAllocator *GetUncachedLockedHeapAllocator() = 0; // 0B

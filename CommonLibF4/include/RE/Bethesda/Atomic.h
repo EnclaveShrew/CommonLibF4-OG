@@ -12,7 +12,8 @@ class BSTAtomicValue
 
     constexpr BSTAtomicValue() noexcept = default;
 
-    explicit constexpr BSTAtomicValue(T a_rhs) noexcept : _value(a_rhs)
+    explicit constexpr BSTAtomicValue(T a_rhs) noexcept
+        : _value(a_rhs)
     {
     }
 

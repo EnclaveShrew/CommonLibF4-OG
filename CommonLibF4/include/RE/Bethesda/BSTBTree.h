@@ -165,11 +165,13 @@ class BSTBTree
         template <class, class, class>
         friend class BSTBTree;
 
-        explicit iterator_base(node_type *a_node) noexcept : iterator_base(a_node, 0)
+        explicit iterator_base(node_type *a_node) noexcept
+            : iterator_base(a_node, 0)
         {
         }
 
-        iterator_base(node_type *a_node, size_type a_pos) noexcept : _pos(a_pos)
+        iterator_base(node_type *a_node, size_type a_pos) noexcept
+            : _pos(a_pos)
         {
             if (a_node && a_node->usedEntries > 0)
             {

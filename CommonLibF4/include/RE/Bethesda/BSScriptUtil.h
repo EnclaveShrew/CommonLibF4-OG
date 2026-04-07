@@ -40,7 +40,7 @@ template <class CharT, std::size_t N1, std::size_t N2>
     std::copy_n(a_lhs.data(), a_lhs.length(), buf);
     buf[a_lhs.length()] = '#';
     std::copy_n(a_rhs.data(), a_rhs.length(), buf + a_lhs.length() + 1);
-    return {static_cast<const char (&)[N1 + 1 + N2 + 1]>(buf)};
+    return {static_cast<const char(&)[N1 + 1 + N2 + 1]>(buf)};
 }
 } // namespace detail
 
@@ -123,7 +123,8 @@ class structure_wrapper
   protected:
     friend struct detail::wrapper_accessor;
 
-    explicit structure_wrapper(BSTSmartPointer<Struct> a_proxy) noexcept : _proxy(std::move(a_proxy))
+    explicit structure_wrapper(BSTSmartPointer<Struct> a_proxy) noexcept
+        : _proxy(std::move(a_proxy))
     {
         assert(_proxy != nullptr);
     }
@@ -1359,7 +1360,8 @@ class FunctionArgsBase
 {
   public:
     FunctionArgsBase() = delete;
-    FunctionArgsBase(IVirtualMachine *a_vm) : vm(a_vm)
+    FunctionArgsBase(IVirtualMachine *a_vm)
+        : vm(a_vm)
     {
     }
 
@@ -1388,7 +1390,8 @@ class FunctionArgs : public FunctionArgsBase
 {
   public:
     FunctionArgs() = delete;
-    FunctionArgs(IVirtualMachine *a_vm, Args... a_args) : FunctionArgsBase(a_vm)
+    FunctionArgs(IVirtualMachine *a_vm, Args... a_args)
+        : FunctionArgsBase(a_vm)
     {
         auto scrap = PackVariables(a_args...);
         args = new ArrayWrapper<Variable>(scrap, *vm);

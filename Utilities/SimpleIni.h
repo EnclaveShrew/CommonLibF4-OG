@@ -406,7 +406,8 @@ class CSimpleIniTempl
         FILE *m_file;
 
       public:
-        FileWriter(FILE *a_file) : m_file(a_file)
+        FileWriter(FILE *a_file)
+            : m_file(a_file)
         {
         }
         void Write(const char *a_pBuf)
@@ -425,7 +426,8 @@ class CSimpleIniTempl
         std::string &m_string;
 
       public:
-        StringWriter(std::string &a_string) : m_string(a_string)
+        StringWriter(std::string &a_string)
+            : m_string(a_string)
         {
         }
         void Write(const char *a_pBuf)
@@ -445,7 +447,8 @@ class CSimpleIniTempl
         std::ostream &m_ostream;
 
       public:
-        StreamWriter(std::ostream &a_ostream) : m_ostream(a_ostream)
+        StreamWriter(std::ostream &a_ostream)
+            : m_ostream(a_ostream)
         {
         }
         void Write(const char *a_pBuf)
@@ -465,7 +468,8 @@ class CSimpleIniTempl
     class Converter : private SI_CONVERTER
     {
       public:
-        Converter(bool a_bStoreIsUtf8) : SI_CONVERTER(a_bStoreIsUtf8)
+        Converter(bool a_bStoreIsUtf8)
+            : SI_CONVERTER(a_bStoreIsUtf8)
         {
             m_scratch.resize(1024);
         }
@@ -3082,7 +3086,8 @@ class SI_ConvertA
     }
 
   public:
-    SI_ConvertA(bool a_bStoreIsUtf8) : m_bStoreIsUtf8(a_bStoreIsUtf8)
+    SI_ConvertA(bool a_bStoreIsUtf8)
+        : m_bStoreIsUtf8(a_bStoreIsUtf8)
     {
     }
 
@@ -3223,7 +3228,8 @@ class SI_ConvertW
     }
 
   public:
-    SI_ConvertW(bool a_bStoreIsUtf8) : m_bStoreIsUtf8(a_bStoreIsUtf8)
+    SI_ConvertW(bool a_bStoreIsUtf8)
+        : m_bStoreIsUtf8(a_bStoreIsUtf8)
     {
     }
 
@@ -3447,12 +3453,14 @@ class SI_ConvertW
     UConverter *m_pConverter;
 
   protected:
-    SI_ConvertW() : m_pEncoding(NULL), m_pConverter(NULL)
+    SI_ConvertW()
+        : m_pEncoding(NULL), m_pConverter(NULL)
     {
     }
 
   public:
-    SI_ConvertW(bool a_bStoreIsUtf8) : m_pConverter(NULL)
+    SI_ConvertW(bool a_bStoreIsUtf8)
+        : m_pConverter(NULL)
     {
         m_pEncoding = a_bStoreIsUtf8 ? "UTF-8" : NULL;
     }

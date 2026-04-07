@@ -39,12 +39,12 @@ class __declspec(novtable) NiAVObject : public NiObjectNET // 000
     virtual void SetDefaultMaterialNeedsUpdateFlag(bool)
     {
         return;
-    }                                            // 2C
+    } // 2C
     virtual void SetAppCulled(bool a_appCulled); // 2D
     virtual NiAVObject *GetObjectByName(const BSFixedString &a_name)
     {
         return name == a_name ? this : nullptr;
-    }                                                                                                               // 2E
+    } // 2E
     virtual void SetSelectiveUpdateFlags(bool &a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool &a_rigid); // 2F
     virtual void UpdateDownwardPass(NiUpdateData &a_data, std::uint32_t a_flags);                                   // 30
     virtual void UpdateSelectedDownwardPass(NiUpdateData &a_data, std::uint32_t a_flags);                           // 31
@@ -52,13 +52,13 @@ class __declspec(novtable) NiAVObject : public NiObjectNET // 000
     virtual void UpdateWorldBound()
     {
         return;
-    }                                                            // 33
+    } // 33
     virtual void UpdateWorldData(NiUpdateData *a_data);          // 34
     virtual void UpdateTransformAndBounds(NiUpdateData &a_data); // 35
     virtual void UpdateTransforms(NiUpdateData &a_data)
     {
         UpdateWorldData(std::addressof(a_data));
-    }                                                                             // 36
+    } // 36
     virtual void PreAttachUpdate(NiNode *a_eventualParent, NiUpdateData &a_data); // 37
     virtual void PostAttachUpdate();                                              // 38
     virtual void OnVisible([[maybe_unused]] NiCullingProcess &a_culler)

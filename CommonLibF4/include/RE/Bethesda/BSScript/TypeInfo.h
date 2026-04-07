@@ -167,7 +167,8 @@ class TypeInfo
 
     // members
     union D {
-        D() noexcept : complexTypeInfo(nullptr)
+        D() noexcept
+            : complexTypeInfo(nullptr)
         {
         }
 

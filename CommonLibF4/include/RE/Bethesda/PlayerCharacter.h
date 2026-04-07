@@ -233,7 +233,8 @@ class __declspec(novtable) PlayerCharacter : public Actor,                      
     struct ScopedInventoryChangeMessageContext
     {
       public:
-        ScopedInventoryChangeMessageContext(bool a_suppressMessages, bool a_suppressAudio) : suppressMessages(a_suppressMessages), suppressAudio(a_suppressAudio)
+        ScopedInventoryChangeMessageContext(bool a_suppressMessages, bool a_suppressAudio)
+            : suppressMessages(a_suppressMessages), suppressAudio(a_suppressAudio)
         {
             ctor(suppressMessages, suppressAudio);
         }
@@ -268,7 +269,7 @@ class __declspec(novtable) PlayerCharacter : public Actor,                      
     virtual void InitiateSpectator(Actor *)
     {
         return;
-    }                                                                               // 133
+    } // 133
     virtual std::uint32_t GetViolentCrimeGoldValue(const TESFaction *a_faction);    // 134
     virtual std::uint32_t GetNonViolentCrimeGoldValue(const TESFaction *a_faction); // 135
     virtual void ClearAllCrimeGold(TESFaction *a_faction);                          // 136

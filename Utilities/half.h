@@ -1152,7 +1152,7 @@ unsigned int float2half_impl(T value, ...)
 template <std::float_round_style R, typename T>
 unsigned int float2half(T value)
 {
-    return float2half_impl<R>(value, bool_type<std::numeric_limits<T>::is_iec559 && sizeof(typename bits<T>::type) == sizeof(T)>());
+    return float2half_impl<R>(value, bool_type < std::numeric_limits<T>::is_iec559 && sizeof(typename bits<T>::type) == sizeof(T) > ());
 }
 
 /// Convert integer to half-precision floating-point.
@@ -1397,7 +1397,7 @@ T half2float_impl(unsigned int value, T, ...)
 template <typename T>
 T half2float(unsigned int value)
 {
-    return half2float_impl(value, T(), bool_type<std::numeric_limits<T>::is_iec559 && sizeof(typename bits<T>::type) == sizeof(T)>());
+    return half2float_impl(value, T(), bool_type < std::numeric_limits<T>::is_iec559 && sizeof(typename bits<T>::type) == sizeof(T) > ());
 }
 
 /// Convert half-precision floating-point to integer.
@@ -1957,13 +1957,15 @@ struct f31
     /// Constructor.
     /// \param mant mantissa as 1.31
     /// \param e exponent
-    HALF_CONSTEXPR f31(uint32 mant, int e) : m(mant), exp(e)
+    HALF_CONSTEXPR f31(uint32 mant, int e)
+        : m(mant), exp(e)
     {
     }
 
     /// Constructor.
     /// \param abs unsigned half-precision value
-    f31(unsigned int abs) : exp(-15)
+    f31(unsigned int abs)
+        : exp(-15)
     {
         for (; abs < 0x400; abs <<= 1, --exp)
             ;
@@ -2195,7 +2197,8 @@ class half
     /// Conversion constructor.
     /// \param rhs float to convert
     /// \exception FE_OVERFLOW, ...UNDERFLOW, ...INEXACT according to rounding
-    explicit half(float rhs) : data_(static_cast<detail::uint16>(detail::float2half<round_style>(rhs)))
+    explicit half(float rhs)
+        : data_(static_cast<detail::uint16>(detail::float2half<round_style>(rhs)))
     {
     }
 

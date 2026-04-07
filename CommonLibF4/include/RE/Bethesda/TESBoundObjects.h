@@ -56,7 +56,7 @@ class __declspec(novtable) TESObject : public TESForm // 00
     virtual void Clone3D(TESObjectREFR *, NiPointer<NiAVObject> &, bool)
     {
         return;
-    }                                                   // 4E
+    } // 4E
     virtual void UnClone3D(TESObjectREFR *a_requester); // 4F
     virtual bool IsMarker();                            // 50
     virtual bool IsOcclusionMarker();                   // 51
@@ -68,7 +68,7 @@ class __declspec(novtable) TESObject : public TESForm // 00
     virtual std::uint32_t DecRef()
     {
         return 0;
-    }                                                       // 54
+    } // 54
     virtual NiAVObject *LoadGraphics(TESObjectREFR *a_ref); // 55
 };
 static_assert(sizeof(TESObject) == 0x20);
@@ -127,12 +127,12 @@ class __declspec(novtable) TESBoundObject : public TESObject // 00
     virtual BGSVoiceType *GetObjectVoiceType() const
     {
         return nullptr;
-    }                                                                                 // 5C
+    } // 5C
     virtual BGSSoundDescriptorForm *GetSoundForTag(const BSFixedString &a_tag) const; // 5D
     virtual void Clone3D(TESObjectREFR *a_requester, NiPointer<NiAVObject> &a_obj3D)
     {
         TESObject::Clone3D(a_requester, a_obj3D, false);
-    }                                                                                                                         // 5E
+    } // 5E
     virtual bool ReplaceModel(const char *a_filename);                                                                        // 5F
     virtual bool GetActivateText(TESObjectREFR *a_itemActivated, BSStringT<char> &a_resultString);                            // 60
     virtual COMMAND_REFUSAL_TYPE CalculateDoFavor(Actor *a_actor, bool a_owned, TESObjectREFR *, float a_moralityMult) const; // 61
@@ -448,17 +448,17 @@ class __declspec(novtable) TESGrass : public TESBoundObject, // 00
     virtual std::int8_t GetDensity() const
     {
         return data.density;
-    }                                               // 67
+    } // 67
     virtual bool SetDensity(std::int8_t a_density); // 68
     virtual std::int8_t GetMinSlopeDegrees() const
     {
         return data.minSlopeDegrees;
-    }                                                               // 69
+    } // 69
     virtual bool SetMinSlopeDegrees(std::int8_t a_minSlopeDegrees); // 6A
     virtual std::int8_t GetMaxSlopeDegrees() const
     {
         return data.maxSlopeDegrees;
-    }                                                               // 6B
+    } // 6B
     virtual bool SetMaxSlopeDegrees(std::int8_t a_maxSlopeDegrees); // 6C
     virtual float GetMinSlope() const;                              // 6D
     virtual float GetMaxSlope() const;                              // 6E
@@ -481,22 +481,22 @@ class __declspec(novtable) TESGrass : public TESBoundObject, // 00
     virtual float GetPositionRange() const
     {
         return data.positionRange;
-    }                                             // 73
+    } // 73
     virtual bool SetPositionRange(float a_range); // 74
     virtual float GetHeightRange() const
     {
         return data.heightRange;
-    }                                           // 75
+    } // 75
     virtual bool SetHeightRange(float a_range); // 76
     virtual float GetColorRange() const
     {
         return data.colorRange;
-    }                                          // 77
+    } // 77
     virtual bool SetColorRange(float a_range); // 78
     virtual float GetWavePeriod() const
     {
         return data.wavePeriod;
-    }                                              // 79
+    } // 79
     virtual bool SetWavePeriod(float a_period);    // 7A
     virtual bool GetVertexLighting() const;        // 7B
     virtual void SetVertexLighting(bool a_flag);   // 7C

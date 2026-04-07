@@ -166,12 +166,14 @@ class BSAutoLock
     using mutex_type = Mutex;
     using policy_type = Policy<mutex_type>;
 
-    explicit BSAutoLock(mutex_type &a_mutex) : _lock(std::addressof(a_mutex))
+    explicit BSAutoLock(mutex_type &a_mutex)
+        : _lock(std::addressof(a_mutex))
     {
         policy_type::lock(*_lock);
     }
 
-    explicit BSAutoLock(mutex_type *a_mutex) : _lock(a_mutex)
+    explicit BSAutoLock(mutex_type *a_mutex)
+        : _lock(a_mutex)
     {
         if (_lock)
         {

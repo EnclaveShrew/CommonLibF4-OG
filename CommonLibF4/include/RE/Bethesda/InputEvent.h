@@ -163,7 +163,7 @@ class __declspec(novtable) InputEvent
     virtual bool HasIDCode() const
     {
         return false;
-    }                                                // 02
+    } // 02
     virtual const BSFixedString &QUserEvent() const; // 03
 
     template <class T>

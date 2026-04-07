@@ -16,8 +16,9 @@ class BSTArrayHeapAllocator
     BSTArrayHeapAllocator() noexcept = default;
     BSTArrayHeapAllocator(const BSTArrayHeapAllocator &) = delete;
 
-    BSTArrayHeapAllocator(BSTArrayHeapAllocator &&a_rhs) noexcept : _data{std::exchange(a_rhs._data, nullptr)},
-                                                                    _capacity{std::exchange(a_rhs._capacity, 0)}
+    BSTArrayHeapAllocator(BSTArrayHeapAllocator &&a_rhs) noexcept
+        : _data{std::exchange(a_rhs._data, nullptr)},
+          _capacity{std::exchange(a_rhs._capacity, 0)}
     {
     }
 
@@ -86,8 +87,9 @@ struct BSTAlignedHeapArrayAllocator
         Allocator() noexcept = default;
         Allocator(const Allocator &) = delete;
 
-        Allocator(Allocator &&a_rhs) noexcept : _data{std::exchange(a_rhs._data, nullptr)},
-                                                _capacity{std::exchange(a_rhs._capacity, 0)}
+        Allocator(Allocator &&a_rhs) noexcept
+            : _data{std::exchange(a_rhs._data, nullptr)},
+              _capacity{std::exchange(a_rhs._capacity, 0)}
         {
         }
 
@@ -401,7 +403,8 @@ class BSTArray : public boost::stl_interfaces::sequence_container_interface<
     }
 
     // 10)
-    BSTArray(std::initializer_list<T> a_init) : BSTArray(a_init.begin(), a_init.end())
+    BSTArray(std::initializer_list<T> a_init)
+        : BSTArray(a_init.begin(), a_init.end())
     {
     }
 

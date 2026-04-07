@@ -39,12 +39,12 @@ class BSResourceNiBinaryStream : public NiBinaryStream
     explicit operator bool() const noexcept override
     {
         return static_cast<bool>(stream);
-    };                                             // 01 - { return static_cast<bool>(stream); }
+    }; // 01 - { return static_cast<bool>(stream); }
     void Seek(std::ptrdiff_t a_numBytes) override; // 02
     std::size_t GetPosition() const noexcept override
     {
         return pos;
-    };                                                                      // 03 - { return streamPos; }
+    }; // 03 - { return streamPos; }
     void GetBufferInfo(BufferInfo &a_buf) override;                         // 04
     std::size_t DoRead(void *a_buf, std::size_t a_toRead) override;         // 05
     std::size_t DoWrite(const void *a_buf, std::size_t a_toWrite) override; // 05

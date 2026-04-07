@@ -358,7 +358,8 @@ class TaskInterface
     class TaskDelegate : public ITaskDelegate
     {
       public:
-        explicit TaskDelegate(std::function<void()> a_task) noexcept : _impl(std::move(a_task))
+        explicit TaskDelegate(std::function<void()> a_task) noexcept
+            : _impl(std::move(a_task))
         {
         }
 

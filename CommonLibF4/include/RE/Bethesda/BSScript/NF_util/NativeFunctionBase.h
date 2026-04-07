@@ -42,11 +42,12 @@ class __declspec(novtable) NativeFunctionBase : public IFunction // 00
         std::string_view a_function,
         std::uint16_t a_paramCount,
         bool a_isStatic,
-        bool a_isLatent) : name(a_function),
-                           objName(a_object),
-                           descTable(a_paramCount, 0),
-                           isStatic(a_isStatic),
-                           isLatent(a_isLatent)
+        bool a_isLatent)
+        : name(a_function),
+          objName(a_object),
+          descTable(a_paramCount, 0),
+          isStatic(a_isStatic),
+          isLatent(a_isLatent)
     {
         for (std::size_t i = 0; i < descTable.paramCount; ++i)
         {

@@ -28,7 +28,8 @@ class NiPointer
     }
 
     // 9a)
-    NiPointer(const NiPointer &a_rhs) : _ptr(a_rhs._ptr)
+    NiPointer(const NiPointer &a_rhs)
+        : _ptr(a_rhs._ptr)
     {
         TryAttach();
     }
@@ -43,7 +44,8 @@ class NiPointer
     }
 
     // 10a)
-    NiPointer(NiPointer &&a_rhs) noexcept : _ptr(std::exchange(a_rhs._ptr, nullptr))
+    NiPointer(NiPointer &&a_rhs) noexcept
+        : _ptr(std::exchange(a_rhs._ptr, nullptr))
     {
     }
 

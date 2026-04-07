@@ -354,7 +354,8 @@ class unique_struct
         destroy();
     }
 
-    unique_struct(unique_struct &&a_rhs) noexcept : _value(a_rhs._value)
+    unique_struct(unique_struct &&a_rhs) noexcept
+        : _value(a_rhs._value)
     {
         a_rhs.zero();
     }

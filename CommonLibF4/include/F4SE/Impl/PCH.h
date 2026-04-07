@@ -260,8 +260,9 @@ class counted_function_iterator : public boost::stl_interfaces::iterator_interfa
 
     counted_function_iterator(
         F a_fn,
-        std::size_t a_count) noexcept : _fn(std::move(a_fn)),
-                                        _left(a_count)
+        std::size_t a_count) noexcept
+        : _fn(std::move(a_fn)),
+          _left(a_count)
     {
     }
 
@@ -311,7 +312,8 @@ class enumeration
     constexpr enumeration(enumeration &&) noexcept = default;
 
     template <class U2> // NOLINTNEXTLINE(google-explicit-constructor)
-    constexpr enumeration(enumeration<Enum, U2> a_rhs) noexcept : _impl(static_cast<underlying_type>(a_rhs.get()))
+    constexpr enumeration(enumeration<Enum, U2> a_rhs) noexcept
+        : _impl(static_cast<underlying_type>(a_rhs.get()))
     {
     }
 
@@ -400,9 +402,9 @@ class enumeration
 
 template <class... Args>
 enumeration(Args...) -> enumeration<
-    std::common_type_t<Args...>,
-    std::underlying_type_t<
-        std::common_type_t<Args...>>>;
+                         std::common_type_t<Args...>,
+                         std::underlying_type_t<
+                             std::common_type_t<Args...>>>;
 } // namespace stl
 } // namespace F4SE
 
@@ -534,7 +536,8 @@ class atomic_ref : public std::atomic_ref<T>
   public:
     using value_type = typename super::value_type;
 
-    explicit atomic_ref(volatile T &a_obj) noexcept(std::is_nothrow_constructible_v<super, value_type &>) : super(const_cast<value_type &>(a_obj))
+    explicit atomic_ref(volatile T &a_obj) noexcept(std::is_nothrow_constructible_v<super, value_type &>)
+        : super(const_cast<value_type &>(a_obj))
     {
     }
 

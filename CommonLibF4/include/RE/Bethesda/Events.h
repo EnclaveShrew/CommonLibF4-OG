@@ -289,7 +289,8 @@ class PerkPointIncreaseEvent
     using EventSource_t = BSTGlobalEvent::EventSource<PerkPointIncreaseEvent>;
 
   public:
-    PerkPointIncreaseEvent(std::uint8_t a_perkCount) : perkCount(a_perkCount)
+    PerkPointIncreaseEvent(std::uint8_t a_perkCount)
+        : perkCount(a_perkCount)
     {
     }
 

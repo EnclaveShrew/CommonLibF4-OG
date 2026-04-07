@@ -125,7 +125,7 @@ class __declspec(novtable) EntryData
     virtual void CopyTo(void *a_dest) const = 0;                    // 02
     virtual void ReleaseNodes() const
     {
-    }                                               // 03
+    } // 03
     virtual void Destroy() = 0;                     // 04
     virtual bool PropagateUp(Entry *a_entry) const; // 05
 

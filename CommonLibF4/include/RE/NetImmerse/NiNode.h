@@ -15,11 +15,13 @@ class __declspec(novtable) NiNode : public NiAVObject // 000
     static constexpr auto Ni_RTTI{Ni_RTTI::NiNode};
 
     // NOLINTNEXTLINE(modernize-use-equals-default)
-    NiNode() : NiNode(0)
+    NiNode()
+        : NiNode(0)
     {
     }
 
-    explicit NiNode(std::uint32_t a_numChildren) : children(a_numChildren)
+    explicit NiNode(std::uint32_t a_numChildren)
+        : children(a_numChildren)
     {
         stl::emplace_vtable(this);
         REL::Relocation<std::uintptr_t> childrenVTable{REL::ID(390064)};

@@ -81,7 +81,8 @@ struct BSTTuple
     template <
         class... Args1,
         class... Args2>
-    BSTTuple(std::piecewise_construct_t, std::tuple<Args1...> a_firstArgs, std::tuple<Args2...> a_secondArgs) : BSTTuple(a_firstArgs, a_secondArgs, std::index_sequence_for<Args1...>(), std::index_sequence_for<Args2...>())
+    BSTTuple(std::piecewise_construct_t, std::tuple<Args1...> a_firstArgs, std::tuple<Args2...> a_secondArgs)
+        : BSTTuple(a_firstArgs, a_secondArgs, std::index_sequence_for<Args1...>(), std::index_sequence_for<Args2...>())
     {
     }
 
@@ -92,8 +93,9 @@ struct BSTTuple
         class Tuple2,
         std::size_t... I1,
         std::size_t... I2>
-    BSTTuple(Tuple1 &a_firstArgs, Tuple2 &a_secondArgs, std::index_sequence<I1...>, std::index_sequence<I2...>) : first(std::get<I1>(std::move(a_firstArgs))...),
-                                                                                                                  second(std::get<I2>(std::move(a_secondArgs))...)
+    BSTTuple(Tuple1 &a_firstArgs, Tuple2 &a_secondArgs, std::index_sequence<I1...>, std::index_sequence<I2...>)
+        : first(std::get<I1>(std::move(a_firstArgs))...),
+          second(std::get<I2>(std::move(a_secondArgs))...)
     {
     }
 

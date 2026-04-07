@@ -605,7 +605,7 @@ class __declspec(novtable) TBO_InstanceData : public BSIntrusiveRefCounted // 08
     virtual float GetColorRemappingIndex() const
     {
         return std::numeric_limits<float>::max();
-    }                                                                           // 10
+    } // 10
     virtual void PostAttach3D(NiAVObject *a_obj3D, TESObjectREFR *a_ref) const; // 11
     virtual void PostApplyMods(const TESBoundObject *)
     {
@@ -628,7 +628,7 @@ class __declspec(novtable) BaseFormComponent
     virtual std::uint32_t GetFormComponentType() const
     {
         return 0;
-    }                                           // 01
+    } // 01
     virtual void InitializeDataComponent() = 0; // 02
     virtual void ClearDataComponent() = 0;      // 03
     virtual void InitComponent()
@@ -657,14 +657,14 @@ class __declspec(novtable) TESTexture : public BaseFormComponent // 00
     void ClearDataComponent() override
     {
         return;
-    }                                                 // 03
+    } // 03
     void CopyComponent(BaseFormComponent *) override; // 06
 
     // add
     virtual std::uint32_t GetMaxAllowedSize()
     {
         return 0;
-    }                                                                          // 07
+    } // 07
     virtual const char *GetAsNormalFile(BSStringT<char> &a_outFilename) const; // 08
     virtual const char *GetDefaultPath() const
     {
@@ -779,12 +779,12 @@ class __declspec(novtable) BGSAttachParentArray : public BaseFormComponent,     
     void InitializeDataComponent() override
     {
         return;
-    }                                   // 02
+    } // 02
     void ClearDataComponent() override; // 03
     void CopyComponent(BaseFormComponent *) override
     {
         return;
-    }                                                            // 06
+    } // 06
     void CopyComponent(BaseFormComponent *, TESForm *) override; // 05
 
     void SetParentGroupNumber(BGSKeyword *keyword, uint32_t i)
@@ -1032,12 +1032,12 @@ class __declspec(novtable) BGSKeywordForm : public BaseFormComponent, // 00
     void InitializeDataComponent() override
     {
         return;
-    }                                   // 02
+    } // 02
     void ClearDataComponent() override; // 03
     void InitComponent() override
     {
         return;
-    }                                                 // 04
+    } // 04
     void CopyComponent(BaseFormComponent *) override; // 06
 
     // override (IKeywordFormBase)
@@ -1172,7 +1172,8 @@ static_assert(sizeof(BGSOverridePackCollection) == 0x38);
 struct PerkRankData
 {
   public:
-    PerkRankData(BGSPerk *a_perk, std::int8_t a_rank) : perk(a_perk), currentRank(a_rank)
+    PerkRankData(BGSPerk *a_perk, std::int8_t a_rank)
+        : perk(a_perk), currentRank(a_rank)
     {
     }
 
@@ -1262,12 +1263,12 @@ class __declspec(novtable) BGSPreviewTransform : public BaseFormComponent // 00
     void ClearDataComponent() override
     {
         return;
-    }                              // 03
+    } // 03
     void InitComponent() override; // 04
     void CopyComponent(BaseFormComponent *) override
     {
         return;
-    }                                                            // 06
+    } // 06
     void CopyComponent(BaseFormComponent *, TESForm *) override; // 05
 
     // members
@@ -1311,13 +1312,13 @@ class __declspec(novtable) BGSSoundTagComponent : public BaseFormComponent // 0
     void InitializeDataComponent() override
     {
         return;
-    }                                   // 02
+    } // 02
     void ClearDataComponent() override; // 03
     void InitComponent() override;      // 04
     void CopyComponent(BaseFormComponent *) override
     {
         return;
-    }                                                            // 06
+    } // 06
     void CopyComponent(BaseFormComponent *, TESForm *) override; // 05
 };
 static_assert(sizeof(BGSSoundTagComponent) == 0x8);
@@ -1326,7 +1327,8 @@ class ContainerItemExtra
 {
   public:
     union Conditional {
-        Conditional() : ownerGlobal(nullptr)
+        Conditional()
+            : ownerGlobal(nullptr)
         {
         }
         ~Conditional() = default;
@@ -1339,14 +1341,16 @@ class ContainerItemExtra
     };
     static_assert(sizeof(Conditional) == 0x8);
 
-    ContainerItemExtra() : ownerForm(nullptr),
-                           conditional(),
-                           healthMult(100.0f)
+    ContainerItemExtra()
+        : ownerForm(nullptr),
+          conditional(),
+          healthMult(100.0f)
     {
     }
-    ContainerItemExtra(TESForm *a_owner) : ownerForm(a_owner),
-                                           conditional(),
-                                           healthMult(100.0f)
+    ContainerItemExtra(TESForm *a_owner)
+        : ownerForm(a_owner),
+          conditional(),
+          healthMult(100.0f)
     {
     }
 
@@ -1362,14 +1366,16 @@ static_assert(sizeof(ContainerItemExtra) == 0x18);
 class ContainerObject
 {
   public:
-    ContainerObject(TESBoundObject *a_obj, std::int32_t a_count) : count(a_count),
-                                                                   obj(a_obj),
-                                                                   itemExtra()
+    ContainerObject(TESBoundObject *a_obj, std::int32_t a_count)
+        : count(a_count),
+          obj(a_obj),
+          itemExtra()
     {
     }
-    ContainerObject(TESBoundObject *a_obj, std::int32_t a_count, TESForm *a_ownerForm) : count(a_count),
-                                                                                         obj(a_obj),
-                                                                                         itemExtra(new ContainerItemExtra(a_ownerForm))
+    ContainerObject(TESBoundObject *a_obj, std::int32_t a_count, TESForm *a_ownerForm)
+        : count(a_count),
+          obj(a_obj),
+          itemExtra(new ContainerItemExtra(a_ownerForm))
     {
     }
     ~ContainerObject() = default;
@@ -1481,7 +1487,7 @@ class __declspec(novtable) TESDescription : public BaseFormComponent // 00
     void ClearDataComponent() override
     {
         return;
-    }                                                 // 03
+    } // 03
     void CopyComponent(BaseFormComponent *) override; // 06
 
     void GetDescription(BSStringT<char> &a_outString, const TESForm *a_form = nullptr)
@@ -1738,7 +1744,7 @@ class __declspec(novtable) TESActorBaseData : public BaseFormComponent // 00
     virtual void CopyFromTemplateForms([[maybe_unused]] TESActorBase **a_forceTemplates)
     {
         return;
-    }                                     // 07
+    } // 07
     virtual bool GetIsGhost() const;      // 08
     virtual bool GetInvulnerable() const; // 09
 
@@ -1913,7 +1919,7 @@ class __declspec(novtable) TESLeveledList : public BaseFormComponent // 00
     virtual const char *GetOverrideName()
     {
         return nullptr;
-    }                                                                     // 0A
+    } // 0A
     virtual bool GetCanContainFormsOfType(ENUM_FORM_ID a_type) const = 0; // 0B
 
     LEVELED_OBJECT *AddLeveledObject(uint16_t a_level, uint16_t a_count, int8_t a_chanceNone, TESForm *a_item, ContainerItemExtra *a_itemExtra)
@@ -2038,12 +2044,13 @@ class __declspec(novtable) TESSpellList : public BaseFormComponent // 00
     struct SpellData
     {
       public:
-        SpellData() : spells(nullptr),
-                      levSpells(nullptr),
-                      shouts(nullptr),
-                      numSpells(0),
-                      numLevSpells(0),
-                      numShouts(0)
+        SpellData()
+            : spells(nullptr),
+              levSpells(nullptr),
+              shouts(nullptr),
+              numSpells(0),
+              numLevSpells(0),
+              numShouts(0)
         {
         }
         ~SpellData() = default;

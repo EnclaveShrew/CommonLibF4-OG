@@ -58,7 +58,7 @@ class NiTMapBase
     virtual void clear_value([[maybe_unused]] value_type *a_value)
     {
         return;
-    }                                                 // 04
+    } // 04
     virtual value_type *malloc_value() = 0;           // 05
     virtual void free_value(value_type *a_value) = 0; // 06
 

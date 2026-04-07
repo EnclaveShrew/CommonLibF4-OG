@@ -152,7 +152,8 @@ class __declspec(novtable) IVirtualMachine : public BSIntrusiveRefCounted // 08
         class ErrorImpl : public ICachedErrorMessage
         {
           public:
-            ErrorImpl(std::string_view a_message) noexcept : _message(a_message)
+            ErrorImpl(std::string_view a_message) noexcept
+                : _message(a_message)
             {
             }
 

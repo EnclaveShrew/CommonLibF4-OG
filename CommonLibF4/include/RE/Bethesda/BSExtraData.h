@@ -281,11 +281,13 @@ class __declspec(novtable) BSExtraData
     static constexpr auto VTABLE{VTABLE::BSExtraData};
     static constexpr auto TYPE{EXTRA_DATA_TYPE::kNone};
 
-    BSExtraData() : BSExtraData(EXTRA_DATA_TYPE::kNone)
+    BSExtraData()
+        : BSExtraData(EXTRA_DATA_TYPE::kNone)
     {
     }
 
-    BSExtraData(EXTRA_DATA_TYPE a_type) : type(a_type)
+    BSExtraData(EXTRA_DATA_TYPE a_type)
+        : type(a_type)
     {
         stl::emplace_vtable(this);
     }
@@ -296,7 +298,7 @@ class __declspec(novtable) BSExtraData
     virtual bool CompareImpl([[maybe_unused]] const BSExtraData &a_compare) const
     {
         return false;
-    }                                                             // 01
+    } // 01
     virtual bool CompareForUI(const BSExtraData *a_compare) const // 02
     {
         if (a_compare && type == a_compare->type)
@@ -419,7 +421,8 @@ class __declspec(novtable) BGSObjectInstanceExtra : public BSExtraData // 00
     static constexpr auto VTABLE{VTABLE::BGSObjectInstanceExtra};
     static constexpr auto TYPE{EXTRA_DATA_TYPE::kObjectInstance};
 
-    BGSObjectInstanceExtra() : BSExtraData(TYPE)
+    BGSObjectInstanceExtra()
+        : BSExtraData(TYPE)
     {
         stl::emplace_vtable(this);
     }
@@ -489,12 +492,14 @@ class __declspec(novtable) ExtraStartingWorldOrCell : public BSExtraData // 00
     static constexpr auto VTABLE{VTABLE::ExtraStartingWorldOrCell};
     static constexpr auto TYPE{EXTRA_DATA_TYPE::kStartingWorldOrCell};
 
-    ExtraStartingWorldOrCell() : ExtraStartingWorldOrCell(nullptr)
+    ExtraStartingWorldOrCell()
+        : ExtraStartingWorldOrCell(nullptr)
     {
     }
 
-    ExtraStartingWorldOrCell(TESForm *a_form) : BSExtraData(TYPE),
-                                                startingWorldOrCell(a_form)
+    ExtraStartingWorldOrCell(TESForm *a_form)
+        : BSExtraData(TYPE),
+          startingWorldOrCell(a_form)
     {
         stl::emplace_vtable(this);
     }
@@ -558,7 +563,8 @@ class __declspec(novtable) ExtraMaterialSwap : public BSExtraData // 00
     static constexpr auto VTABLE{VTABLE::ExtraMaterialSwap};
     static constexpr auto TYPE{EXTRA_DATA_TYPE::kMaterialSwap};
 
-    ExtraMaterialSwap() : BSExtraData(TYPE)
+    ExtraMaterialSwap()
+        : BSExtraData(TYPE)
     {
         stl::emplace_vtable(this);
     }
@@ -769,7 +775,7 @@ class BaseExtraList
             CreateFlags();
         }
 
-        return std::span{reinterpret_cast<std::uint8_t (&)[N]>(*_flags)};
+        return std::span{reinterpret_cast<std::uint8_t(&)[N]>(*_flags)};
     }
 
     void MarkType(EXTRA_DATA_TYPE a_type, bool a_set)

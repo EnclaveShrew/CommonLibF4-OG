@@ -175,40 +175,49 @@ class Value
     };
 
     union ValueUnion {
-        ValueUnion() noexcept : data(nullptr)
+        ValueUnion() noexcept
+            : data(nullptr)
         {
         }
 
-        ValueUnion(const ValueUnion &a_rhs) noexcept : data(a_rhs.data)
+        ValueUnion(const ValueUnion &a_rhs) noexcept
+            : data(a_rhs.data)
         {
         }
 
-        ValueUnion(ValueUnion &&a_rhs) noexcept : data(a_rhs.data)
+        ValueUnion(ValueUnion &&a_rhs) noexcept
+            : data(a_rhs.data)
         {
             a_rhs.data = nullptr;
         }
 
-        explicit ValueUnion(std::int32_t a_rhs) noexcept : int32(a_rhs)
+        explicit ValueUnion(std::int32_t a_rhs) noexcept
+            : int32(a_rhs)
         {
         }
 
-        explicit ValueUnion(std::uint32_t a_rhs) noexcept : uint32(a_rhs)
+        explicit ValueUnion(std::uint32_t a_rhs) noexcept
+            : uint32(a_rhs)
         {
         }
 
-        explicit ValueUnion(double a_rhs) noexcept : number(a_rhs)
+        explicit ValueUnion(double a_rhs) noexcept
+            : number(a_rhs)
         {
         }
 
-        explicit ValueUnion(bool a_rhs) noexcept : boolean(a_rhs)
+        explicit ValueUnion(bool a_rhs) noexcept
+            : boolean(a_rhs)
         {
         }
 
-        explicit ValueUnion(const char *a_rhs) noexcept : string(a_rhs)
+        explicit ValueUnion(const char *a_rhs) noexcept
+            : string(a_rhs)
         {
         }
 
-        explicit ValueUnion(const wchar_t *a_rhs) noexcept : wstring(a_rhs)
+        explicit ValueUnion(const wchar_t *a_rhs) noexcept
+            : wstring(a_rhs)
         {
         }
 
@@ -290,7 +299,7 @@ class Value
             virtual bool IncludeAS3PublicMembers() const
             {
                 return false;
-            }                                                               // 01
+            } // 01
             virtual void Visit(const char *a_name, const Value &a_val) = 0; // 02
         };
         static_assert(sizeof(ObjVisitor) == 0x8);
@@ -363,9 +372,10 @@ class Value
 
     Value() noexcept = default;
 
-    Value(const Value &a_rhs) : _type(a_rhs._type),
-                                _value(a_rhs._value),
-                                _dataAux(a_rhs._dataAux)
+    Value(const Value &a_rhs)
+        : _type(a_rhs._type),
+          _value(a_rhs._value),
+          _dataAux(a_rhs._dataAux)
     {
         if (a_rhs.IsManagedValue())
         {
@@ -373,47 +383,55 @@ class Value
         }
     }
 
-    Value(Value &&a_rhs) noexcept : _objectInterface(a_rhs._objectInterface),
-                                    _type(a_rhs._type),
-                                    _value(std::move(a_rhs._value)),
-                                    _dataAux(a_rhs._dataAux)
+    Value(Value &&a_rhs) noexcept
+        : _objectInterface(a_rhs._objectInterface),
+          _type(a_rhs._type),
+          _value(std::move(a_rhs._value)),
+          _dataAux(a_rhs._dataAux)
     {
         a_rhs._objectInterface = nullptr;
         a_rhs._type = ValueType::kUndefined;
         a_rhs._dataAux = 0;
     }
 
-    Value(std::nullptr_t) noexcept : _type(ValueType::kNull)
+    Value(std::nullptr_t) noexcept
+        : _type(ValueType::kNull)
     {
     }
 
-    Value(std::int32_t a_rhs) noexcept : _type(ValueType::kInt),
-                                         _value(a_rhs)
+    Value(std::int32_t a_rhs) noexcept
+        : _type(ValueType::kInt),
+          _value(a_rhs)
     {
     }
 
-    Value(std::uint32_t a_rhs) noexcept : _type(ValueType::kUInt),
-                                          _value(a_rhs)
+    Value(std::uint32_t a_rhs) noexcept
+        : _type(ValueType::kUInt),
+          _value(a_rhs)
     {
     }
 
-    Value(double a_rhs) noexcept : _type(ValueType::kNumber),
-                                   _value(a_rhs)
+    Value(double a_rhs) noexcept
+        : _type(ValueType::kNumber),
+          _value(a_rhs)
     {
     }
 
-    Value(bool a_rhs) noexcept : _type(ValueType::kBoolean),
-                                 _value(a_rhs)
+    Value(bool a_rhs) noexcept
+        : _type(ValueType::kBoolean),
+          _value(a_rhs)
     {
     }
 
-    Value(const char *a_rhs) noexcept : _type(ValueType::kString),
-                                        _value(a_rhs)
+    Value(const char *a_rhs) noexcept
+        : _type(ValueType::kString),
+          _value(a_rhs)
     {
     }
 
-    Value(const wchar_t *a_rhs) noexcept : _type(ValueType::kStringW),
-                                           _value(a_rhs)
+    Value(const wchar_t *a_rhs) noexcept
+        : _type(ValueType::kStringW),
+          _value(a_rhs)
     {
     }
 

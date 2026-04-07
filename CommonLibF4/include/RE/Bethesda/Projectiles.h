@@ -112,7 +112,7 @@ class __declspec(novtable) Projectile : public TESObjectREFR // 000
     virtual void Process3D()
     {
         return;
-    }                                                            // CD
+    } // CD
     virtual void PostLoad3D(NiAVObject *a_obj3D);                // CE
     virtual void UpdateImpl(float a_delta) = 0;                  // CF
     virtual bool ProcessImpacts();                               // D0
@@ -136,7 +136,7 @@ class __declspec(novtable) Projectile : public TESObjectREFR // 000
     virtual void ReportHavokDeactivation()
     {
         return;
-    }                                                          // D6
+    } // D6
     virtual bool TurnOff(Actor *a_actionActor, bool a_silent); // D7
     virtual bool IsPermanent();                                // D8
     virtual float GetGravity() const;                          // D9
@@ -153,7 +153,7 @@ class __declspec(novtable) Projectile : public TESObjectREFR // 000
     virtual bool TargetsWholeBody() const
     {
         return false;
-    }                                                // DE
+    } // DE
     virtual bool GetAllowMovement() const;           // DF
     virtual std::uint32_t GetCollisionGroup() const; // E0
     virtual hknpShape *GetCollisionShape();          // E1
@@ -164,13 +164,13 @@ class __declspec(novtable) Projectile : public TESObjectREFR // 000
     virtual void Relaunch()
     {
         return;
-    }                                                                                                               // E3
+    } // E3
     virtual std::uint32_t AddImpact(const ImpactCreation &a_data);                                                  // E4
     virtual bool HandleHits(const hknpAllHitsCollector &a_collector, const NiPoint3 &a_from, const NiPoint3 &a_to); // E5
     virtual void OnEnterTrigger()
     {
         return;
-    }                                  // E6
+    } // E6
     virtual void AddInitialVelocity(); // E7
     virtual void Handle3DLoaded()
     {

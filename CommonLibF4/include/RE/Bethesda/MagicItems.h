@@ -77,12 +77,12 @@ class __declspec(novtable) MagicItem : public TESBoundObject, // 00
     virtual void SetCastingType([[maybe_unused]] MagicSystem::CastingType a_castingType)
     {
         return;
-    }                                                            // 68
+    } // 68
     virtual MagicSystem::CastingType GetCastingType() const = 0; // 69
     virtual void SetDelivery([[maybe_unused]] MagicSystem::Delivery a_delivery)
     {
         return;
-    }                                                      // 6A
+    } // 6A
     virtual MagicSystem::Delivery GetDelivery() const = 0; // 6B
     virtual bool IsValidDelivery(MagicSystem::Delivery)
     {
@@ -119,7 +119,7 @@ class __declspec(novtable) MagicItem : public TESBoundObject, // 00
     virtual bool GetSkillUsageData([[maybe_unused]] SkillUsageData &a_data) const
     {
         return false;
-    }                              // 74
+    } // 74
     virtual bool IsPoison() const; // 75
     virtual bool IsMedicine() const
     {
@@ -144,7 +144,7 @@ class __declspec(novtable) MagicItem : public TESBoundObject, // 00
     virtual bool IsTwoHanded() const
     {
         return false;
-    }                                                      // 7B
+    } // 7B
     virtual CHUNK_ID GetChunkID() = 0;                     // 7C
     virtual void CopyMagicItemData(MagicItem *a_copy) = 0; // 7D
     virtual void LoadMagicItemChunk([[maybe_unused]] TESFile *a_file, [[maybe_unused]] CHUNK_ID a_chunkID)
@@ -154,7 +154,7 @@ class __declspec(novtable) MagicItem : public TESBoundObject, // 00
     virtual void LoadChunkDataPostProcess([[maybe_unused]] TESFile *a_file)
     {
         return;
-    }                                                // 7F
+    } // 7F
     virtual Data *GetData() = 0;                     // 81
     virtual const Data *GetData() const = 0;         // 80
     virtual std::size_t GetDataSize() const = 0;     // 82

@@ -39,14 +39,14 @@ class __declspec(novtable) BSShader : public NiRefObject,    // 000
     virtual void SetupMaterialSecondary([[maybe_unused]] const BSShaderMaterial *a_material)
     {
         return;
-    }                                                                                                       // 06
+    } // 06
     virtual void SetupGeometry(BSRenderPass *a_currentPass) = 0;                                            // 07
     virtual void RestoreGeometry(BSRenderPass *a_currentPass) = 0;                                          // 08
     virtual void GetTechniqueName(std::uint32_t a_techniqueID, char *a_buffer, std::uint32_t a_bufferSize); // 09
     virtual void RecreateRendererData()
     {
         return;
-    }                                         // 0A
+    } // 0A
     virtual void ReloadShaders(bool a_clear); // 0B
     virtual std::uint32_t GetBonesVertexConstant() const
     {

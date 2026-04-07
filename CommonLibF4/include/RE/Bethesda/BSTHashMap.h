@@ -190,8 +190,9 @@ class BSTScatterTable
       protected:
         friend class BSTScatterTable;
 
-        iterator_base(entry_type *a_first, entry_type *a_last) noexcept : _first(a_first),
-                                                                          _last(a_last)
+        iterator_base(entry_type *a_first, entry_type *a_last) noexcept
+            : _first(a_first),
+              _last(a_last)
         {
             assert(!!_first == !!_last); // both or neither have values
             assert(_first <= _last);
@@ -728,7 +729,8 @@ struct BSTScatterTableHeapAllocator
     BSTScatterTableHeapAllocator() = default;
     BSTScatterTableHeapAllocator(const BSTScatterTableHeapAllocator &) = delete;
 
-    BSTScatterTableHeapAllocator(BSTScatterTableHeapAllocator &&a_rhs) noexcept : _entries(std::exchange(a_rhs._entries, nullptr))
+    BSTScatterTableHeapAllocator(BSTScatterTableHeapAllocator &&a_rhs) noexcept
+        : _entries(std::exchange(a_rhs._entries, nullptr))
     {
     }
 

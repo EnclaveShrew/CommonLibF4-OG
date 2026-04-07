@@ -44,7 +44,8 @@ static_assert(sizeof(BGSStoryEventManager) == 0x68);
 struct BGSCraftItemEvent
 {
   public:
-    BGSCraftItemEvent(TESObjectREFR *a_workbench, BGSLocation *a_location, TESForm *a_baseObject) : location(a_location), createdItemBase(a_baseObject)
+    BGSCraftItemEvent(TESObjectREFR *a_workbench, BGSLocation *a_location, TESForm *a_baseObject)
+        : location(a_location), createdItemBase(a_baseObject)
     {
         if (a_workbench)
         {
@@ -68,7 +69,8 @@ static_assert(sizeof(BGSCraftItemEvent) == 0x18);
 struct BGSHackTerminal
 {
   public:
-    BGSHackTerminal(TESObjectREFR *a_terminal, std::uint32_t a_success) : success(a_success)
+    BGSHackTerminal(TESObjectREFR *a_terminal, std::uint32_t a_success)
+        : success(a_success)
     {
         if (a_terminal)
         {

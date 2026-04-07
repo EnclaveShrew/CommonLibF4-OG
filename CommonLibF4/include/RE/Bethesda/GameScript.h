@@ -199,7 +199,7 @@ class __declspec(novtable) DelayFunctor : public BSIntrusiveRefCounted // 08
     [[nodiscard]] virtual bool WantsRequeue() const
     {
         return false;
-    }                                                                                                            // 03
+    } // 03
     [[nodiscard]] virtual FunctorType GetType() const = 0;                                                       // 04
     virtual bool SaveImpl(BSStorage &a_storage) const = 0;                                                       // 05
     virtual bool LoadImpl(const BSStorage &a_storage, std::uint32_t a_scriptSaveVersion, bool &a_dataValid) = 0; // 06
@@ -241,7 +241,7 @@ struct __declspec(novtable) HandlePolicy : public BSScript::IObjectHandlePolicy 
     std::size_t EmptyHandle() const override
     {
         return 0xFFFF00000000;
-    }                                                                                          // 06
+    } // 06
     std::size_t GetHandleForObject(std::uint32_t a_type, const void *a_object) const override; // 07
     bool HasParent(std::size_t a_childHandle) const override;                                  // 08
     std::size_t GetParentHandle(std::size_t a_childHandle) const override;                     // 09
@@ -319,7 +319,7 @@ class __declspec(novtable) ObjectBindPolicy : public BSScript::ObjectBindPolicy 
     void WriteExtraInfo(std::size_t, const BSScript::IHandleReaderWriter &, BSStorage &) const override
     {
         return;
-    }                                                                                                                                                                                                                                                         // 09
+    } // 09
     void ReadExtraInfo(std::size_t a_objHandle, std::uint16_t a_handleVersion, const BSScript::IHandleReaderWriter &a_handleReaderWriter, const BSStorage &a_storage) override;                                                                               // 0A
     bool IsIgnoringClear() const override;                                                                                                                                                                                                                    // 0B
     void ResolveProperties(std::size_t a_objTarget, const BSTSmartPointer<BSScript::Object> &a_object, const BSTSmartPointer<BSScript::BoundScript> &a_boundScript, bool a_postSaveConstOnly) override;                                                       // 0D

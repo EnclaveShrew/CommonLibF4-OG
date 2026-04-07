@@ -131,14 +131,14 @@ class __declspec(novtable) Setting
     {
         assert(GetType() == SETTING_TYPE::kRGB);
         return std::span<const std::uint8_t, 3>{
-            reinterpret_cast<const std::uint8_t (&)[3]>(*std::addressof(_value.r))};
+            reinterpret_cast<const std::uint8_t(&)[3]>(*std::addressof(_value.r))};
     }
 
     [[nodiscard]] std::span<const std::uint8_t, 4> GetRGBA() const noexcept
     {
         assert(GetType() == SETTING_TYPE::kRGBA);
         return std::span<const std::uint8_t, 4>{
-            reinterpret_cast<const std::uint8_t (&)[4]>(*std::addressof(_value.a))};
+            reinterpret_cast<const std::uint8_t(&)[4]>(*std::addressof(_value.a))};
     }
 
     [[nodiscard]] std::string_view GetString() const noexcept

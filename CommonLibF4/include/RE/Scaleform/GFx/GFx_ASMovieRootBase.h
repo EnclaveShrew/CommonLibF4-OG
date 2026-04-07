@@ -45,7 +45,7 @@ class __declspec(novtable) ASMovieRootBase : public RefCountBase<ASMovieRootBase
     virtual void SetMovie(MovieImpl *a_movie)
     {
         movieImpl = a_movie;
-    }                                                                                                                     // 01
+    } // 01
     virtual void AdvanceFrame(bool a_nextFrame) = 0;                                                                      // 02
     virtual void ChangeMouseCursorType(std::uint32_t a_mouseIdx, std::uint32_t a_newCursorType) = 0;                      // 03
     virtual bool CheckAvm() = 0;                                                                                          // 04
@@ -96,7 +96,7 @@ class __declspec(novtable) ASMovieRootBase : public RefCountBase<ASMovieRootBase
     virtual void NotifyGeolocationEvent([[maybe_unused]] const EventId *a_id, [[maybe_unused]] std::int32_t a_evtIDGeo)
     {
         return;
-    }                                          // 1A
+    } // 1A
     virtual void OnMovieFocus(bool a_set) = 0; // 1B
     virtual void OnNextFrame() = 0;            // 1C
     virtual void OnDeviceOrientationChanged([[maybe_unused]] const OrientationEvent &)
@@ -126,7 +126,7 @@ class __declspec(novtable) ASMovieRootBase : public RefCountBase<ASMovieRootBase
     virtual AmpMovieObjectDesc *GetDisplayObjectsTree([[maybe_unused]] MemoryHeap *a_heap)
     {
         return nullptr;
-    }                                                                                                                                                  // 23
+    } // 23
     virtual void ProcessLoadQueueEntry(GFx::LoadQueueEntry *a_entry, LoadStates *a_ls) = 0;                                                            // 24
     virtual void ProcessLoadVarsMT(GFx::LoadQueueEntry *a_entry, LoadStates *a_ls, const String &a_data, std::size_t a_fileLen, bool a_succeeded) = 0; // 25
 

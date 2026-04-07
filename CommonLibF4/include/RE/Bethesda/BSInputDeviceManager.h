@@ -29,7 +29,7 @@ class __declspec(novtable) BSInputDevice
     virtual bool IsConnected() const
     {
         return true;
-    }                                   // 03
+    } // 03
     virtual ~BSInputDevice();           // 04
     virtual void ClearInputState() = 0; // 05
 

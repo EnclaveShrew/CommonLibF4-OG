@@ -15,7 +15,8 @@ class VTable
     using iterator = typename container_type::iterator;
     using const_iterator = typename container_type::const_iterator;
 
-    VTable(std::string_view a_name) : VTable(type_descriptor(a_name))
+    VTable(std::string_view a_name)
+        : VTable(type_descriptor(a_name))
     {
     }
 

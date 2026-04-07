@@ -26,8 +26,9 @@ class VDescTable
     using value_type = BSTTuple<BSFixedString, TypeInfo>;
     using size_type = std::uint16_t;
 
-    VDescTable(size_type a_params, size_type a_locals) : paramCount(a_params),
-                                                         totalEntries(a_params + a_locals)
+    VDescTable(size_type a_params, size_type a_locals)
+        : paramCount(a_params),
+          totalEntries(a_params + a_locals)
     {
         const auto total = paramCount + totalEntries;
         if (total > 0)

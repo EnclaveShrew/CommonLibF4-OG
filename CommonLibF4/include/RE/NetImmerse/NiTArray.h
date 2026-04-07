@@ -100,9 +100,10 @@ class NiTArray
         friend iterator_base;
         friend NiTArray;
 
-        explicit iterator_base(pointer a_pos, pointer a_head, pointer a_tail) noexcept : _pos(a_pos),
-                                                                                         _head(a_head),
-                                                                                         _tail(a_tail)
+        explicit iterator_base(pointer a_pos, pointer a_head, pointer a_tail) noexcept
+            : _pos(a_pos),
+              _head(a_head),
+              _tail(a_tail)
         {
         }
 
@@ -129,8 +130,9 @@ class NiTArray
     using iterator = iterator_base<value_type>;
     using const_iterator = iterator_base<const value_type>;
 
-    explicit NiTArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) : _capacity(static_cast<std::uint16_t>(a_maxSize)),
-                                                                                 _growthSize(static_cast<std::uint16_t>(a_growBy))
+    explicit NiTArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1)
+        : _capacity(static_cast<std::uint16_t>(a_maxSize)),
+          _growthSize(static_cast<std::uint16_t>(a_growBy))
     {
         if (capacity() > 0)
         {

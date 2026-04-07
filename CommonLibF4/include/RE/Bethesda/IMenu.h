@@ -447,7 +447,8 @@ static_assert(sizeof(IMenu) == 0x70);
 class HUDModeType
 {
   public:
-    HUDModeType(const char *a_modeString) : modeString(a_modeString)
+    HUDModeType(const char *a_modeString)
+        : modeString(a_modeString)
     {
     }
 
@@ -509,7 +510,8 @@ class BSGFxObject : public Scaleform::GFx::Value,   // 00
   public:
     static constexpr auto RTTI{RTTI::BSGFxObject};
 
-    BSGFxObject(const Scaleform::GFx::Value &a_flashObject) : Scaleform::GFx::Value(a_flashObject)
+    BSGFxObject(const Scaleform::GFx::Value &a_flashObject)
+        : Scaleform::GFx::Value(a_flashObject)
     {
     }
 
@@ -554,17 +556,20 @@ class BSGFxDisplayObject : public BSGFxObject // 00
     };
     static_assert(sizeof(InitialDisplayState) == 0x08);
 
-    BSGFxDisplayObject(const Scaleform::GFx::Value &a_flashObject) : BSGFxObject(a_flashObject)
+    BSGFxDisplayObject(const Scaleform::GFx::Value &a_flashObject)
+        : BSGFxObject(a_flashObject)
     {
         ctor_shared();
     }
 
-    BSGFxDisplayObject(const Scaleform::GFx::Value &a_flashObject, const char *a_relativePathToMember) : BSGFxObject(a_flashObject, a_relativePathToMember)
+    BSGFxDisplayObject(const Scaleform::GFx::Value &a_flashObject, const char *a_relativePathToMember)
+        : BSGFxObject(a_flashObject, a_relativePathToMember)
     {
         ctor_shared();
     }
 
-    BSGFxDisplayObject(const Scaleform::GFx::Movie &a_parentMovie, const char *a_pathToObject) : BSGFxObject(a_parentMovie, a_pathToObject)
+    BSGFxDisplayObject(const Scaleform::GFx::Movie &a_parentMovie, const char *a_pathToObject)
+        : BSGFxObject(a_parentMovie, a_pathToObject)
     {
         ctor_shared();
     }
@@ -625,17 +630,20 @@ class BSGFxShaderFXTarget : public BSGFxDisplayObject,                 // 00
     static constexpr auto RTTI{RTTI::BSGFxShaderFXTarget};
     static constexpr auto VTABLE{VTABLE::BSGFxShaderFXTarget};
 
-    BSGFxShaderFXTarget(const Scaleform::GFx::Value &a_flashObject) : BSGFxDisplayObject(a_flashObject)
+    BSGFxShaderFXTarget(const Scaleform::GFx::Value &a_flashObject)
+        : BSGFxDisplayObject(a_flashObject)
     {
         ctor_shared();
     }
 
-    BSGFxShaderFXTarget(const Scaleform::GFx::Value &a_flashObject, const char *a_relativePathToMember) : BSGFxDisplayObject(a_flashObject, a_relativePathToMember)
+    BSGFxShaderFXTarget(const Scaleform::GFx::Value &a_flashObject, const char *a_relativePathToMember)
+        : BSGFxDisplayObject(a_flashObject, a_relativePathToMember)
     {
         ctor_shared();
     }
 
-    BSGFxShaderFXTarget(const Scaleform::GFx::Movie &a_parentMovie, const char *a_pathToObject) : BSGFxDisplayObject(a_parentMovie, a_pathToObject)
+    BSGFxShaderFXTarget(const Scaleform::GFx::Movie &a_parentMovie, const char *a_pathToObject)
+        : BSGFxDisplayObject(a_parentMovie, a_pathToObject)
     {
         ctor_shared();
     }
@@ -1471,7 +1479,7 @@ class __declspec(novtable) ContainerMenuBase : public GameMenuBase,             
     virtual void ConfirmInvestment()
     {
         return;
-    }                                                                                                        // 14
+    } // 14
     virtual void DoItemTransfer(std::uint32_t a_itemIndex, std::uint32_t a_count, bool a_fromContainer) = 0; // 15
     virtual bool GetDisplayBarterValues()
     {
@@ -1488,7 +1496,7 @@ class __declspec(novtable) ContainerMenuBase : public GameMenuBase,             
     virtual void ToggleItemEquipped([[maybe_unused]] std::uint32_t a_itemIndex, [[maybe_unused]] bool a_inContainer)
     {
         return;
-    }                                                                                                                                                 // 19
+    } // 19
     virtual std::uint32_t GetItemValue(std::uint32_t a_itemIndex, bool a_inContainer);                                                                // 1A
     virtual const InventoryUserUIInterfaceEntry *GetInventoryItemByListIndex(bool a_inContainer, std::uint32_t a_index);                              // 1B
     virtual void PopulateMenuObj(ObjectRefHandle a_inventoryRef, const InventoryUserUIInterfaceEntry &a_entry, Scaleform::GFx::Value &a_menuObj) = 0; // 1C
@@ -1497,7 +1505,7 @@ class __declspec(novtable) ContainerMenuBase : public GameMenuBase,             
     virtual void UpdateItemPickpocketInfo([[maybe_unused]] std::int32_t a_index, [[maybe_unused]] bool a_inContainer, [[maybe_unused]] std::int32_t a_count)
     {
         return;
-    }                                                // 1F
+    } // 1F
     virtual void UpdateList(bool a_inContainer) = 0; // 20
 
     void SetMessageBoxMode(bool a_messageBoxMode)
@@ -1777,7 +1785,8 @@ class __declspec(novtable) ExamineConfirmMenu : public GameMenuBase // 00
         static constexpr auto RTTI{RTTI::ExamineConfirmMenu__ICallback};
         static constexpr auto VTABLE{VTABLE::ExamineConfirmMenu__ICallback};
 
-        ICallback(ExamineMenu *a_thisMenu) : thisMenu(a_thisMenu)
+        ICallback(ExamineMenu *a_thisMenu)
+            : thisMenu(a_thisMenu)
         {
             stl::emplace_vtable(this);
         }
@@ -1800,9 +1809,10 @@ class __declspec(novtable) ExamineConfirmMenu : public GameMenuBase // 00
         static constexpr auto RTTI{RTTI::ExamineConfirmMenu__InitData};
         static constexpr auto VTABLE{VTABLE::ExamineConfirmMenu__InitData};
 
-        InitData(BSFixedString a_confirmQuestion, BSFixedStringCS a_buttonLabel, CONFIRM_TYPE a_confirmType) : confirmQuestion(a_confirmQuestion),
-                                                                                                               buttonLabel(a_buttonLabel),
-                                                                                                               confirmType(a_confirmType)
+        InitData(BSFixedString a_confirmQuestion, BSFixedStringCS a_buttonLabel, CONFIRM_TYPE a_confirmType)
+            : confirmQuestion(a_confirmQuestion),
+              buttonLabel(a_buttonLabel),
+              confirmType(a_confirmType)
         {
             stl::emplace_vtable(this);
         }
@@ -1825,9 +1835,10 @@ class __declspec(novtable) ExamineConfirmMenu : public GameMenuBase // 00
         static constexpr auto RTTI{RTTI::ExamineConfirmMenu__InitDataScrap};
         static constexpr auto VTABLE{VTABLE::ExamineConfirmMenu__InitDataScrap};
 
-        InitDataScrap(const char *a_confirmQuestion, const char *a_buttonLabel, const char *a_scrapSourceName, BSTArray<BSTTuple<TESBoundObject *, std::uint32_t>> a_scrapResults) : InitData(a_confirmQuestion, a_buttonLabel, CONFIRM_TYPE::kScrap),
-                                                                                                                                                                                     scrapSourceName(a_scrapSourceName),
-                                                                                                                                                                                     scrapResults(a_scrapResults)
+        InitDataScrap(const char *a_confirmQuestion, const char *a_buttonLabel, const char *a_scrapSourceName, BSTArray<BSTTuple<TESBoundObject *, std::uint32_t>> a_scrapResults)
+            : InitData(a_confirmQuestion, a_buttonLabel, CONFIRM_TYPE::kScrap),
+              scrapSourceName(a_scrapSourceName),
+              scrapResults(a_scrapResults)
         {
             stl::emplace_vtable(this);
         }
@@ -1853,8 +1864,9 @@ class __declspec(novtable) ScrapItemCallback : public ExamineConfirmMenu::ICallb
     static constexpr auto RTTI{RTTI::__ScrapItemCallback};
     static constexpr auto VTABLE{VTABLE::__ScrapItemCallback};
 
-    ScrapItemCallback(ExamineMenu *a_thisMenu, std::uint32_t a_itemIndex) : ExamineConfirmMenu::ICallback(a_thisMenu),
-                                                                            itemIndex(a_itemIndex)
+    ScrapItemCallback(ExamineMenu *a_thisMenu, std::uint32_t a_itemIndex)
+        : ExamineConfirmMenu::ICallback(a_thisMenu),
+          itemIndex(a_itemIndex)
     {
         stl::emplace_vtable(this);
     }

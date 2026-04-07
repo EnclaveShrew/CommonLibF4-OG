@@ -33,7 +33,8 @@ class BSUntypedPointerHandle
     BSUntypedPointerHandle() noexcept = default;
     BSUntypedPointerHandle(const BSUntypedPointerHandle &) noexcept = default;
 
-    explicit BSUntypedPointerHandle(value_type a_handle) noexcept : _handle(a_handle)
+    explicit BSUntypedPointerHandle(value_type a_handle) noexcept
+        : _handle(a_handle)
     {
     }
 

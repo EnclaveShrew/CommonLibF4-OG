@@ -10,7 +10,8 @@ class LogMessageId;
 class LogMessageId
 {
   public:
-    LogMessageId(std::int32_t a_id) : id(a_id)
+    LogMessageId(std::int32_t a_id)
+        : id(a_id)
     {
     }
 

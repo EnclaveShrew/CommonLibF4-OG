@@ -4,19 +4,23 @@ namespace RE
 {
 namespace BSResource
 {
-Stream::Stream() : Stream(0, false)
+Stream::Stream()
+    : Stream(0, false)
 {
 }
 
-Stream::Stream(std::uint32_t a_totalSize, bool writable) : StreamBase(a_totalSize, writable)
+Stream::Stream(std::uint32_t a_totalSize, bool writable)
+    : StreamBase(a_totalSize, writable)
 {
 }
 
-Stream::Stream(const Stream &a_rhs) : StreamBase(a_rhs)
+Stream::Stream(const Stream &a_rhs)
+    : StreamBase(a_rhs)
 {
 }
 
-Stream::Stream(Stream &&a_rhs) : StreamBase(std::move(a_rhs))
+Stream::Stream(Stream &&a_rhs)
+    : StreamBase(std::move(a_rhs))
 {
 }
 

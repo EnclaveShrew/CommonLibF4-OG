@@ -57,7 +57,7 @@ struct __declspec(novtable) BSShaderProperty : public NiShadeProperty // 00
     virtual BSRenderPass *GetRenderDepthPass(BSGeometry *)
     {
         return nullptr;
-    }                                                      // 30
+    } // 30
     virtual bool CanMerge(const BSShaderProperty *a_prop); // 31
     virtual void SetMaterialAlpha(float)
     {
@@ -66,7 +66,7 @@ struct __declspec(novtable) BSShaderProperty : public NiShadeProperty // 00
     virtual float QMaterialAlpha() const
     {
         return 1.0F;
-    }                                                 // 33
+    } // 33
     virtual const BSFixedString &GetRootName() const; // 34
     virtual std::int32_t ForEachTexture(ForEachVisitor &)
     {

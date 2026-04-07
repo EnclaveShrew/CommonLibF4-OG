@@ -2,24 +2,27 @@
 
 namespace RE
 {
-BSResourceNiBinaryStream::BSResourceNiBinaryStream() : NiBinaryStream(),
-                                                       stream(nullptr),
-                                                       buffer(nullptr),
-                                                       pos(0),
-                                                       lastError(BSResource::ErrorCode::kNone)
+BSResourceNiBinaryStream::BSResourceNiBinaryStream()
+    : NiBinaryStream(),
+      stream(nullptr),
+      buffer(nullptr),
+      pos(0),
+      lastError(BSResource::ErrorCode::kNone)
 {
 }
 
-BSResourceNiBinaryStream::BSResourceNiBinaryStream(const char *a_fileName) : NiBinaryStream(),
-                                                                             stream(0),
-                                                                             buffer(nullptr),
-                                                                             pos(0),
-                                                                             lastError(BSResource::ErrorCode::kNone)
+BSResourceNiBinaryStream::BSResourceNiBinaryStream(const char *a_fileName)
+    : NiBinaryStream(),
+      stream(0),
+      buffer(nullptr),
+      pos(0),
+      lastError(BSResource::ErrorCode::kNone)
 {
     ctor(a_fileName);
 }
 
-BSResourceNiBinaryStream::BSResourceNiBinaryStream(const std::string &a_fileName) : BSResourceNiBinaryStream(a_fileName.c_str())
+BSResourceNiBinaryStream::BSResourceNiBinaryStream(const std::string &a_fileName)
+    : BSResourceNiBinaryStream(a_fileName.c_str())
 {
 }
 

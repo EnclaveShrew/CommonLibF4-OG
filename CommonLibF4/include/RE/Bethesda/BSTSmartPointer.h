@@ -104,13 +104,15 @@ class BSTSmartPointer
                 Y *,
                 element_type *>,
             int> = 0>
-    explicit BSTSmartPointer(Y *a_rhs) : _ptr(a_rhs)
+    explicit BSTSmartPointer(Y *a_rhs)
+        : _ptr(a_rhs)
     {
         TryAttach();
     }
 
     // 9a
-    BSTSmartPointer(const BSTSmartPointer &a_rhs) : _ptr(a_rhs._ptr)
+    BSTSmartPointer(const BSTSmartPointer &a_rhs)
+        : _ptr(a_rhs._ptr)
     {
         TryAttach();
     }
@@ -123,13 +125,15 @@ class BSTSmartPointer
                 Y *,
                 element_type *>,
             int> = 0>
-    BSTSmartPointer(const BSTSmartPointer<Y> &a_rhs) : _ptr(a_rhs._ptr)
+    BSTSmartPointer(const BSTSmartPointer<Y> &a_rhs)
+        : _ptr(a_rhs._ptr)
     {
         TryAttach();
     }
 
     // 10a
-    BSTSmartPointer(BSTSmartPointer &&a_rhs) noexcept : _ptr(a_rhs._ptr)
+    BSTSmartPointer(BSTSmartPointer &&a_rhs) noexcept
+        : _ptr(a_rhs._ptr)
     {
         a_rhs._ptr = nullptr;
     }
@@ -142,7 +146,8 @@ class BSTSmartPointer
                 Y *,
                 element_type *>,
             int> = 0>
-    BSTSmartPointer(BSTSmartPointer<Y> &&a_rhs) noexcept : _ptr(a_rhs._ptr)
+    BSTSmartPointer(BSTSmartPointer<Y> &&a_rhs) noexcept
+        : _ptr(a_rhs._ptr)
     {
         a_rhs._ptr = nullptr;
     }

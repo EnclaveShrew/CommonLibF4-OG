@@ -75,7 +75,8 @@ class BGSInventoryItem
         static constexpr auto RTTI{RTTI::BGSInventoryItem__CheckStackIDFunctor};
         static constexpr auto VTABLE{VTABLE::BGSInventoryItem__CheckStackIDFunctor};
 
-        CheckStackIDFunctor(std::uint32_t a_targetIndex) noexcept : targetIndex(a_targetIndex)
+        CheckStackIDFunctor(std::uint32_t a_targetIndex) noexcept
+            : targetIndex(a_targetIndex)
         {
         }
 
@@ -111,10 +112,11 @@ class BGSInventoryItem
         static constexpr auto RTTI{RTTI::BGSInventoryItem__ModifyModDataFunctor};
         static constexpr auto VTABLE{VTABLE::BGSInventoryItem__ModifyModDataFunctor};
 
-        ModifyModDataFunctor(BGSMod::Attachment::Mod *a_mod, std::int8_t a_slotIndex, bool a_attach, bool *a_success) : mod(a_mod),
-                                                                                                                        success(a_success),
-                                                                                                                        slotIndex(a_slotIndex),
-                                                                                                                        attach(a_attach)
+        ModifyModDataFunctor(BGSMod::Attachment::Mod *a_mod, std::int8_t a_slotIndex, bool a_attach, bool *a_success)
+            : mod(a_mod),
+              success(a_success),
+              slotIndex(a_slotIndex),
+              attach(a_attach)
         {
             stl::emplace_vtable(this);
             if (success)

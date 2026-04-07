@@ -672,7 +672,7 @@ class __declspec(novtable) TESForm : public BaseFormComponent // 00
     virtual bool LoadEdit(TESFile *a_file)
     {
         return Load(a_file);
-    }                                                                                                         // 0B
+    } // 0B
     virtual TESForm *CreateDuplicateForm(bool a_createEditorID, BSTHashMap<TESForm *, TESForm *> *a_copyMap); // 0C
     virtual bool AddChange(std::uint32_t a_changeFlags);                                                      // 0D
     virtual void RemoveChange(std::uint32_t a_changeFlags);                                                   // 0E
@@ -683,7 +683,7 @@ class __declspec(novtable) TESForm : public BaseFormComponent // 00
     virtual bool CheckSaveGame([[maybe_unused]] BGSSaveFormBuffer *a_saveGameBuffer) const
     {
         return true;
-    }                                                           // 10
+    } // 10
     virtual void SaveGame(BGSSaveFormBuffer *a_saveGameBuffer); // 11
     virtual void LoadGame(BGSLoadFormBuffer *a_loadGameBuffer); // 12
     virtual void InitLoadGame([[maybe_unused]] BGSLoadFormBuffer *a_loadGameBuffer)
@@ -701,13 +701,13 @@ class __declspec(novtable) TESForm : public BaseFormComponent // 00
     virtual void InitItemImpl()
     {
         return;
-    }                                                 // 16
+    } // 16
     virtual TESFile *GetRevertFile() const;           // 17
     virtual TESFile *GetDescriptionOwnerFile() const; // 18
     virtual ENUM_FORM_ID GetSavedFormType() const
     {
         return *formType;
-    }                                                                             // 19
+    } // 19
     virtual void GetFormDetailedString(char *a_dest, std::uint32_t a_size) const; // 1A
     virtual bool GetKnown() const
     {
@@ -752,12 +752,12 @@ class __declspec(novtable) TESForm : public BaseFormComponent // 00
     virtual bool GetMustUpdate() const
     {
         return (formFlags >> 8) & 1;
-    }                                       // 25
+    } // 25
     virtual void SetOnLocalMap(bool a_val); // 26
     virtual bool GetIgnoredBySandbox() const
     {
         return false;
-    }                                        // 27
+    } // 27
     virtual void SetDelete(bool a_deleted);  // 28
     virtual void SetAltered(bool a_altered); // 29
     virtual void SaveObjectBound()
@@ -803,12 +803,12 @@ class __declspec(novtable) TESForm : public BaseFormComponent // 00
     virtual std::uint32_t GetRefCount() const
     {
         return 0;
-    }                                                                                // 34
+    } // 34
     virtual const char *GetTextForParsedSubTag(const BSFixedString &a_subTag) const; // 35
     virtual void Copy([[maybe_unused]] TESForm *a_copy)
     {
         return;
-    }                                                                                             // 36
+    } // 36
     virtual bool BelongsInGroup(FORM *a_groupFORM, bool a_allowParentGroups, bool a_currentOnly); // 37
     virtual void CreateGroupData(FORM *a_outGroupFORM, FORM_GROUP *a_parentGroup);                // 38
     virtual std::uint32_t GetFormEditorIDLength() const;                                          // 39
@@ -839,7 +839,7 @@ class __declspec(novtable) TESForm : public BaseFormComponent // 00
     virtual bool Activate([[maybe_unused]] TESObjectREFR *a_itemActivated, [[maybe_unused]] TESObjectREFR *a_actionRef, [[maybe_unused]] TESBoundObject *a_objectToGet, [[maybe_unused]] std::int32_t a_count)
     {
         return false;
-    }                                                              // 40
+    } // 40
     virtual void SetFormID(std::uint32_t a_id, bool a_updateFile); // 41
     virtual const char *GetObjectTypeName() const
     {
@@ -860,7 +860,7 @@ class __declspec(novtable) TESForm : public BaseFormComponent // 00
     virtual BGSSoundTagComponent *GetSoundTagComponent()
     {
         return nullptr;
-    }                                             // 46
+    } // 46
     virtual std::uint32_t GetFilledSlots() const; // 47
     virtual std::uint32_t GetFilledSlotsImpl() const
     {

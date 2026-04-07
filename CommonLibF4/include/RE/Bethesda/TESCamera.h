@@ -69,7 +69,7 @@ class TESCameraState : public BSIntrusiveRefCounted, // 10
     virtual void End()
     {
         return;
-    }                                                                  // 0A
+    } // 0A
     virtual void Update(BSTSmartPointer<TESCameraState> &a_nextState); // 0B
     virtual void GetRotation(NiQuaternion &a_rotation) const;          // 0C
     virtual void GetTranslation(NiPoint3 &a_translation) const;        // 0D
@@ -164,7 +164,7 @@ class __declspec(novtable) TESCamera
     virtual void SetEnabled(bool a_enabled)
     {
         enabled = a_enabled;
-    }                      // 02
+    } // 02
     virtual void Update(); // 03
 
     // members

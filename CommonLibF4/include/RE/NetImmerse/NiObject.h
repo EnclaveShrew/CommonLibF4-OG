@@ -151,12 +151,12 @@ class __declspec(novtable) NiObject : public NiRefObject // 00
     virtual void LinkObject([[maybe_unused]] NiStream &a_stream)
     {
         return;
-    }                                                     // 1C
+    } // 1C
     virtual bool RegisterStreamables(NiStream &a_stream); // 1D
     virtual void SaveBinary([[maybe_unused]] NiStream &a_stream)
     {
         return;
-    }                                                       // 1E
+    } // 1E
     virtual bool IsEqual(NiObject *a_object);               // 1F
     virtual void ProcessClone(NiCloningProcess &a_cloning); // 20
     virtual void PostLinkObject([[maybe_unused]] NiStream &a_stream)

@@ -93,7 +93,8 @@ class PlayerInputHandler : public BSInputEventUser // 00
     static constexpr auto RTTI{RTTI::PlayerInputHandler};
     static constexpr auto VTABLE{VTABLE::PlayerInputHandler};
 
-    explicit constexpr PlayerInputHandler(PlayerControlsData &a_data) noexcept : data(a_data)
+    explicit constexpr PlayerInputHandler(PlayerControlsData &a_data) noexcept
+        : data(a_data)
     {
     }
 
@@ -118,7 +119,8 @@ class HeldStateHandler : public PlayerInputHandler // 00
     static constexpr auto RTTI{RTTI::HeldStateHandler};
     static constexpr auto VTABLE{VTABLE::HeldStateHandler};
 
-    explicit constexpr HeldStateHandler(PlayerControlsData &a_data) noexcept : PlayerInputHandler(a_data)
+    explicit constexpr HeldStateHandler(PlayerControlsData &a_data) noexcept
+        : PlayerInputHandler(a_data)
     {
     }
 

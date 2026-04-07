@@ -2,7 +2,8 @@
 
 namespace RE
 {
-NiBinaryStream::NiBinaryStream() : absoluteCurrentPos(0)
+NiBinaryStream::NiBinaryStream()
+    : absoluteCurrentPos(0)
 {
 }
 

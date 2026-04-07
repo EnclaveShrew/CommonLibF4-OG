@@ -170,13 +170,13 @@ class __declspec(novtable) IAnimationGraphManagerHolder
     virtual void ModifyInitialAnimationStateImpl(const bool)
     {
         return;
-    }                                                                                                              // 03
+    } // 03
     virtual bool GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager> &a_animGraphMgr) const = 0; // 04
     virtual bool SetAnimationGraphManagerImpl(const BSTSmartPointer<BSAnimationGraphManager> &a_animGraphMgr) = 0; // 05
     virtual bool PopulateGraphNodesToTarget([[maybe_unused]] BSScrapArray<NiAVObject *> &a_nodesToAnimate) const
     {
         return false;
-    }                                                                                            // 06
+    } // 06
     virtual bool ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph> &a_animGraph) = 0; // 07
     virtual bool InitializeAnimationGraphVariables([[maybe_unused]] const BSTSmartPointer<BShkbAnimationGraph> &a_newGraph) const
     {
@@ -221,7 +221,7 @@ class __declspec(novtable) IAnimationGraphManagerHolder
     virtual bool GetGraphVariableImpl([[maybe_unused]] std::uint32_t a_graphVarID, [[maybe_unused]] std::int32_t &a_out) const
     {
         return false;
-    }                                                                                                 // 12
+    } // 12
     virtual bool GetGraphVariableImplFloat(const BSFixedString &a_variable, float &a_out) const;      // 13
     virtual bool GetGraphVariableImplInt(const BSFixedString &a_variable, std::int32_t &a_out) const; // 14
     virtual bool GetGraphVariableImplBool(const BSFixedString &a_variable, bool &a_out) const;        // 15
@@ -349,7 +349,8 @@ template <class T>
 class BGSObjectInstanceT : public BGSObjectInstance
 {
   public:
-    BGSObjectInstanceT(T *a_object, TBO_InstanceData *a_instanceData) : BGSObjectInstance(a_object, a_instanceData)
+    BGSObjectInstanceT(T *a_object, TBO_InstanceData *a_instanceData)
+        : BGSObjectInstance(a_object, a_instanceData)
     {
     }
 };
@@ -566,11 +567,13 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     struct RemoveItemData
     {
       public:
-        RemoveItemData(TESForm *a_form, std::int32_t a_count) : RemoveItemData(a_form->As<TESBoundObject>(), a_count)
+        RemoveItemData(TESForm *a_form, std::int32_t a_count)
+            : RemoveItemData(a_form->As<TESBoundObject>(), a_count)
         {
         }
 
-        RemoveItemData(TESBoundObject *a_object, std::int32_t a_count) : object(a_object), count(a_count)
+        RemoveItemData(TESBoundObject *a_object, std::int32_t a_count)
+            : object(a_object), count(a_count)
         {
         }
 
@@ -592,7 +595,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual void PreModelLoaderQueueing()
     {
         return;
-    }                                                                                                                                              // 4B
+    } // 4B
     virtual BGSLocation *GetEditorLocation() const;                                                                                                // 4C
     virtual bool GetEditorLocation(NiPoint3 &a_originalLocation, NiPoint3 &a_originalAngle, TESForm *&a_locationFormOut, TESForm *a_locationForm); // 4D
     virtual bool IsTalking() const;                                                                                                                // 4E
@@ -603,7 +606,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual void AddDynamicIdleCRC([[maybe_unused]] std::uint32_t a_crc)
     {
         return;
-    }                                                                                                  // 53
+    } // 53
     virtual void GetPreviousDynamicIdleCRCS(std::uint32_t *a_crcs, std::uint32_t a_requestSize) const; // 54
     virtual bool GetFullLODRef() const;                                                                // 55
     virtual void SetFullLODRef(bool a_val);                                                            // 56
@@ -623,7 +626,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual TESPackage *CheckForCurrentAliasPackage()
     {
         return nullptr;
-    }                                                                      // 5B
+    } // 5B
     virtual BGSScene *GetCurrentScene() const;                             // 5C
     virtual void SetCurrentScene(BGSScene *a_scene);                       // 5D
     virtual bool UpdateInDialogue(DialogueResponse *a_response, bool);     // 5E
@@ -645,7 +648,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual void AddWornOutfitImpl([[maybe_unused]] BGSOutfit *a_outfit, [[maybe_unused]] bool a_queueItem)
     {
         return;
-    }                                                                                                                                                                 // 6E
+    } // 6E
     virtual bool AddWornItem(TESBoundObject *a_object, BSTSmartPointer<ExtraDataList> a_extra, std::int32_t a_number, bool a_forceEquip, BGSEquipIndex a_equipIndex); // 6F
     virtual void DoTrap([[maybe_unused]] TrapEntry *a_trap, [[maybe_unused]] TargetEntry *a_target)
     {
@@ -654,13 +657,13 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual void DoTrap([[maybe_unused]] TrapData &a_trapData)
     {
         return;
-    }                                                                                                                                                                                                                                            // 70
+    } // 70
     virtual void SetEquipStateLocked(TESBoundObject *a_object, bool a_lock);                                                                                                                                                                     // 72
     virtual void SendContainerChangedEvent(const TESObjectREFR *a_oldContainer, const TESObjectREFR *apNewContainer, const TESBoundObject *a_baseObject, std::int32_t a_count, std::uint32_t a_referenceFormID, std::uint16_t a_uniqueID) const; // 73
     virtual void UnequipArmorFromSlot([[maybe_unused]] BIPED_OBJECT a_bipedObject, [[maybe_unused]] bool a_markAsReequippable)
     {
         return;
-    }                                                                                                      // 74
+    } // 74
     virtual void RemoveAllObjectsWorn();                                                                   // 75
     virtual void PostRemoveWornObject(const BGSObjectInstance &a_object, const BGSEquipSlot *a_equipSlot); // 76
     virtual void Set3DUpdateFlag([[maybe_unused]] RESET_3D_FLAGS a_flag)
@@ -674,7 +677,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual float AdjustItemWeight([[maybe_unused]] TESBoundObject &a_object, [[maybe_unused]] const BGSInventoryItem::Stack &a_stack, float a_weight, [[maybe_unused]] bool *a_shouldModifyWholeStackOut)
     {
         return a_weight;
-    }                                                                                                                                                                                   // 79
+    } // 79
     virtual void AddObjectToContainer(TESBoundObject *a_obj, BSTSmartPointer<ExtraDataList> a_extra, std::int32_t a_count, TESObjectREFR *a_oldContainer, ITEM_REMOVE_REASON a_reason); // 7A
     virtual NiPoint3 GetLookingAtLocation() const;                                                                                                                                      // 7B
     virtual MagicCaster *GetMagicCaster(MagicSystem::CastingSource a_source);                                                                                                           // 7C
@@ -698,7 +701,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual BSFaceGenNiNode *GetFaceNode()
     {
         return GetFaceNodeSkinned();
-    }                                                              // 82
+    } // 82
     virtual bool ClampToGround();                                  // 83
     virtual bool DetachHavok(NiAVObject *a_obj3D);                 // 84
     virtual void InitHavok();                                      // 85
@@ -709,17 +712,17 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual bool IsReadyForAttach([[maybe_unused]] const IO_TASK_PRIORITY &a_priority) const
     {
         return true;
-    }                                  // 8A
+    } // 8A
     virtual NiAVObject *Get3D() const; // 8C
     virtual NiAVObject *Get3D([[maybe_unused]] bool a_firstPerson) const
     {
         return Get3D();
-    }                                             // 8B
+    } // 8B
     virtual NiAVObject *GetFullyLoaded3D() const; // 8D
     virtual bool Is3rdPersonVisible() const
     {
         return true;
-    }                                                                                                                                  // 8E
+    } // 8E
     virtual bool PopulateGraphProjectsToLoad(const NiAVObject *a_obj3D, BSScrapArray<BSStaticStringT<260>> &a_projectFilenames) const; // 8F
     virtual TESModel *GetTESModel() const;                                                                                             // 90
     virtual TESRace *GetVisualsRace() const;                                                                                           // 91
@@ -733,29 +736,29 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual bool GetBehaviorRootNameReplacement([[maybe_unused]] BSFixedString &a_rootNameReplacement) const
     {
         return false;
-    }                                                                                                                          // 96
+    } // 96
     virtual bool GetBehaviorRootData(bool a_onlyCollectActiveRoots, BSScrapArray<BGSBehaviorRootData> &a_behaviorRoots) const; // 97
     virtual void OnHeadInitialized()
     {
         return;
-    }                                                               // 98
+    } // 98
     virtual bool InitNonNPCAnimation(NiNode &a_nodeForAnim);        // 99
     virtual bool CheckAndFixSkinAndBoneOrder(NiNode &a_nodeToTest); // 9A
     virtual void ModifyAnimationUpdateData([[maybe_unused]] BSAnimationUpdateData &a_updateData)
     {
         return;
-    }                                                    // 9B
+    } // 9B
     virtual bool ShouldSaveAnimationOnUnloading() const; // 9C
     virtual bool ShouldSaveAnimationOnSaving() const;    // 9D
     virtual bool ShouldPerformRevert() const
     {
         return true;
-    }                                            // 9E
+    } // 9E
     virtual void UpdateAnimation(float a_delta); // 9F
     virtual void CollectPickNodes()
     {
         return;
-    }                                                                             // A0
+    } // A0
     virtual const BSTSmartPointer<BipedAnim> &GetBiped() const;                   // A2
     virtual const BSTSmartPointer<BipedAnim> &GetBiped(bool a_firstPerson) const; // A1
     virtual const BSTSmartPointer<BipedAnim> &GetCurrentBiped() const
@@ -765,18 +768,18 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual void SetBiped([[maybe_unused]] const BSTSmartPointer<BipedAnim> &a_biped)
     {
         return;
-    }                                                                                                         // A4
+    } // A4
     virtual void AttachWeapon(const BGSObjectInstanceT<TESObjectWEAP> &a_weapon, BGSEquipIndex a_equipIndex); // A5
     virtual void RemoveWeapon([[maybe_unused]] const BGSObjectInstanceT<TESObjectWEAP> &a_weapon, [[maybe_unused]] BGSEquipIndex a_equipIndex, [[maybe_unused]] bool a_queue3DTasks)
     {
         return;
-    }                                                                  // A6
+    } // A6
     virtual void CreateInventoryList(const TESContainer *a_container); // A7
     virtual void DestroyInventoryList();                               // A8
     virtual void SetRunsInLow(bool)
     {
         return;
-    }                                                                                                           // A9
+    } // A9
     virtual void SetObjectReference(TESBoundObject *a_object);                                                  // AA
     virtual void MoveHavok(bool a_forceRec);                                                                    // AB
     virtual void GetLinearVelocity(NiPoint3 &a_velocity) const;                                                 // AC
@@ -788,7 +791,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual void SetMovementComplete(bool)
     {
         return;
-    }                                                // AF
+    } // AF
     virtual void Disable();                          // B0
     virtual void ResetInventory(bool a_leveledOnly); // B1
     virtual NiAVObject *GetCurrent3D() const
@@ -834,7 +837,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual void TryUpdateActorLastSeenTime()
     {
         return;
-    }                                                                                         // BC
+    } // BC
     virtual void SaveGameTest();                                                              // BD
     virtual TESObjectCELL *GetSaveParentCell() const;                                         // BE
     virtual void SetParentCell(TESObjectCELL *a_cell);                                        // BF
@@ -843,7 +846,7 @@ class __declspec(novtable) TESObjectREFR : public TESForm,                      
     virtual bool ApplyCurrent([[maybe_unused]] float a_deltaTime, [[maybe_unused]] const hkVector4f &a_linVel, const hkVector4f &)
     {
         return false;
-    }                                                                                                 // C2
+    } // C2
     virtual BGSDecalGroup *GetDecalGroup() const;                                                     // C3
     virtual void InitDefaultWornImpl(bool a_weapon, bool a_allowChanges);                             // C4
     virtual bool HasKeywordHelper(const BGSKeyword *a_keyword, const TBO_InstanceData *a_data) const; // C5

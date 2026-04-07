@@ -24,13 +24,15 @@ class BSFixedString
     BSFixedString &operator=(const volatile BSFixedString &) = delete;
 
     template <bool B>
-    BSFixedString(const BSFixedString<value_type, B> &a_rhs) : _data(a_rhs._data)
+    BSFixedString(const BSFixedString<value_type, B> &a_rhs)
+        : _data(a_rhs._data)
     {
         try_acquire();
     }
 
     template <bool B>
-    BSFixedString(BSFixedString<value_type, B> &&a_rhs) noexcept : _data(std::exchange(a_rhs._data, nullptr))
+    BSFixedString(BSFixedString<value_type, B> &&a_rhs) noexcept
+        : _data(std::exchange(a_rhs._data, nullptr))
     {
     }
 

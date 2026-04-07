@@ -28,7 +28,7 @@ class __declspec(novtable) NiTimeController : public NiObject // 00
     virtual bool IsVertexController() const
     {
         return false;
-    }                                              // 2C
+    } // 2C
     virtual float ComputeScaledTime(float a_time); // 2D
     virtual void OnPreDisplay()
     {
@@ -37,7 +37,7 @@ class __declspec(novtable) NiTimeController : public NiObject // 00
     virtual bool IsStreamable() const
     {
         return true;
-    }                         // 2F
+    } // 2F
     virtual void Start() = 0; // 30
 
     // members

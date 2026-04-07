@@ -74,7 +74,8 @@ class Mod // id == 1
 
     union DATATYPE {
       public:
-        DATATYPE() noexcept : form(nullptr)
+        DATATYPE() noexcept
+            : form(nullptr)
         {
         }
 
@@ -256,13 +257,13 @@ class __declspec(novtable) Items : public BaseFormComponent // 00
     void InitializeDataComponent() override
     {
         return;
-    }                                   // 02
+    } // 02
     void ClearDataComponent() override; // 03
     void InitComponent() override;      // 04
     void CopyComponent(BaseFormComponent *) override
     {
         return;
-    }                                                            // 06
+    } // 06
     void CopyComponent(BaseFormComponent *, TESForm *) override; // 05
 
     // members

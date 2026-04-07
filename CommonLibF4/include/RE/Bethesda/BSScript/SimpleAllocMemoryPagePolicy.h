@@ -34,7 +34,7 @@ class __declspec(novtable) SimpleAllocMemoryPagePolicy : public IMemoryPagePolic
     std::uint32_t MaximumStackDepth() const override
     {
         return maxStackDepth;
-    }                                                                                                                                       // 02
+    } // 02
     AllocationStatus AllocatePage(std::uint32_t a_sizeInBytes, NewPageStrategy a_strategy, BSTAutoPointer<MemoryPage> &a_newPage) override; // 03
     AllocationStatus GetLargestAvailablePage(BSTAutoPointer<MemoryPage> &a_newPage) override;                                               // 04
     void DisposePage(BSTAutoPointer<MemoryPage> &a_oldPage) override;                                                                       // 05

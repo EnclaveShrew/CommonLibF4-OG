@@ -159,9 +159,10 @@ class BSTObjectArena : private Allocator // 00
         template <class, class, std::uint32_t>
         friend class BSTObjectArena;
 
-        explicit iterator_base(Page *a_proxy, std::byte *a_first, std::byte *a_last) noexcept : _proxy(a_proxy),
-                                                                                                _first(a_first),
-                                                                                                _last(a_last)
+        explicit iterator_base(Page *a_proxy, std::byte *a_first, std::byte *a_last) noexcept
+            : _proxy(a_proxy),
+              _first(a_first),
+              _last(a_last)
         {
         }
 

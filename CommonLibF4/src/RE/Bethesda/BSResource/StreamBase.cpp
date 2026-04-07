@@ -4,23 +4,27 @@ namespace RE
 {
 namespace BSResource
 {
-StreamBase::StreamBase() : totalSize(0),
-                           flags(0)
+StreamBase::StreamBase()
+    : totalSize(0),
+      flags(0)
 {
 }
 
-StreamBase::StreamBase(const StreamBase &a_rhs) : totalSize(a_rhs.totalSize),
-                                                  flags(a_rhs.flags & ~kRefCountMask)
+StreamBase::StreamBase(const StreamBase &a_rhs)
+    : totalSize(a_rhs.totalSize),
+      flags(a_rhs.flags & ~kRefCountMask)
 {
 }
 
-StreamBase::StreamBase(StreamBase &&a_rhs) : totalSize(a_rhs.totalSize),
-                                             flags(a_rhs.flags & ~kRefCountMask)
+StreamBase::StreamBase(StreamBase &&a_rhs)
+    : totalSize(a_rhs.totalSize),
+      flags(a_rhs.flags & ~kRefCountMask)
 {
 }
 
-StreamBase::StreamBase(std::uint32_t a_totalSize, bool writable) : totalSize(a_totalSize),
-                                                                   flags(writable ? 1 : 0)
+StreamBase::StreamBase(std::uint32_t a_totalSize, bool writable)
+    : totalSize(a_totalSize),
+      flags(writable ? 1 : 0)
 {
 }
 

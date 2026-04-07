@@ -19,7 +19,8 @@ class RVA
 
     constexpr RVA() noexcept = default;
 
-    constexpr RVA(std::uint32_t a_rva) noexcept : _rva(a_rva)
+    constexpr RVA(std::uint32_t a_rva) noexcept
+        : _rva(a_rva)
     {
     }
 
